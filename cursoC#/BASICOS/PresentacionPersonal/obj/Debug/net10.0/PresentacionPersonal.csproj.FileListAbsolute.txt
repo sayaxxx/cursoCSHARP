@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\bin\Debug\net10.0\PresentacionPersonal.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\bin\Debug\net10.0\PresentacionPersonal.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\bin\Debug\net10.0\PresentacionPersonal.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\bin\Debug\net10.0\PresentacionPersonal.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\bin\Debug\net10.0\PresentacionPersonal.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\refint\PresentacionPersonal.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\PresentacionPersonal.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PresentacionPersonal\obj\Debug\net10.0\ref\PresentacionPersonal.dll

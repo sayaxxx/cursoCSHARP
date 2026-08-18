@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\bin\Debug\net10.0\IVA.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\bin\Debug\net10.0\IVA.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\bin\Debug\net10.0\IVA.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\bin\Debug\net10.0\IVA.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\bin\Debug\net10.0\IVA.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\refint\IVA.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\IVA.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\IVA\obj\Debug\net10.0\ref\IVA.dll

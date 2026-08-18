@@ -1,10 +1,16 @@
 <Solution>
   <Project Path="AreaRectangulo/AreaRectangulo.csproj" />
+  <Project Path="BASICOS/AreaCirculo/AreaCirculo.csproj" Id="2f711ef6-91d4-44f4-8779-4d795194d947" />
+  <Project Path="BASICOS/ConversorMoneda/ConversorMoneda.csproj" Id="2eee7e53-295f-4234-9522-500f02caa6b6" />
+  <Project Path="BASICOS/PresentacionPersonal/PresentacionPersonal.csproj" Id="36f55372-a3a0-49a1-bc6f-320374644828" />
+  <Project Path="BASICOS/PromedioTresNotas/PromedioTresNotas.csproj" Id="630ace1e-5c50-4d67-9cec-8cec84bf3334" />
   <Project Path="Calculadora/Calculadora.csproj" />
   <Project Path="DiferenciaWrite/DiferenciaWrite.csproj" />
+  <Project Path="EdadFutura/EdadFutura.csproj" Id="fd43f47c-05ab-4a85-a5a6-173b4da36338" />
   <Project Path="FichaAprendiz/FichaAprendiz.csproj" />
   <Project Path="holaMundo/holaMundo.csproj" />
   <Project Path="Interpolacion/Interpolacion.csproj" />
+  <Project Path="IVA/IVA.csproj" Id="fa995360-3e08-4e3a-9c1a-600b10ee6631" />
   <Project Path="SaludoPersonalizado/SaludoPersonalizado.csproj" />
   <Project Path="SumaNumeros/SumaNumeros.csproj" />
   <Project Path="Variables/Variables.csproj" />

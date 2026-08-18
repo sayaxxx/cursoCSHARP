@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\bin\Debug\net10.0\ConversorMoneda.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\bin\Debug\net10.0\ConversorMoneda.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\bin\Debug\net10.0\ConversorMoneda.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\bin\Debug\net10.0\ConversorMoneda.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\bin\Debug\net10.0\ConversorMoneda.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\refint\ConversorMoneda.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ConversorMoneda.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\ConversorMoneda\obj\Debug\net10.0\ref\ConversorMoneda.dll

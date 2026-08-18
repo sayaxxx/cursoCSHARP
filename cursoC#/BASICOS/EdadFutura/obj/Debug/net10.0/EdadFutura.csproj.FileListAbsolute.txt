@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\bin\Debug\net10.0\EdadFutura.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\bin\Debug\net10.0\EdadFutura.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\bin\Debug\net10.0\EdadFutura.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\bin\Debug\net10.0\EdadFutura.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\bin\Debug\net10.0\EdadFutura.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\refint\EdadFutura.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\EdadFutura.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\EdadFutura\obj\Debug\net10.0\ref\EdadFutura.dll

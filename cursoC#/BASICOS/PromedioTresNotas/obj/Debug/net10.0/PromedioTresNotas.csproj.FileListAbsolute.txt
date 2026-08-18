@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\bin\Debug\net10.0\PromedioTresNotas.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\bin\Debug\net10.0\PromedioTresNotas.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\bin\Debug\net10.0\PromedioTresNotas.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\bin\Debug\net10.0\PromedioTresNotas.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\bin\Debug\net10.0\PromedioTresNotas.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\refint\PromedioTresNotas.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\PromedioTresNotas.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\BASICOS\PromedioTresNotas\obj\Debug\net10.0\ref\PromedioTresNotas.dll

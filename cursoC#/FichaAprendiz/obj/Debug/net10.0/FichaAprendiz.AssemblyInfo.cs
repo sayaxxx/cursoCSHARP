@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FichaAprendiz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6668ca17d21468fb41e08950cf34d3b7d3f7840")]
 [assembly: System.Reflection.AssemblyProductAttribute("FichaAprendiz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FichaAprendiz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
