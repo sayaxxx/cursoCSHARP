@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\bin\Debug\net10.0\AlertaTemperatura.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\bin\Debug\net10.0\AlertaTemperatura.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\bin\Debug\net10.0\AlertaTemperatura.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\bin\Debug\net10.0\AlertaTemperatura.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\bin\Debug\net10.0\AlertaTemperatura.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\refint\AlertaTemperatura.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\AlertaTemperatura.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AlertaTemperatura\obj\Debug\net10.0\ref\AlertaTemperatura.dll

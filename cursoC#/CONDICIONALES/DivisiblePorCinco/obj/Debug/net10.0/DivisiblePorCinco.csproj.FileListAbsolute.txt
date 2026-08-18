@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\bin\Debug\net10.0\DivisiblePorCinco.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\bin\Debug\net10.0\DivisiblePorCinco.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\bin\Debug\net10.0\DivisiblePorCinco.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\bin\Debug\net10.0\DivisiblePorCinco.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\bin\Debug\net10.0\DivisiblePorCinco.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\refint\DivisiblePorCinco.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\DivisiblePorCinco.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\DivisiblePorCinco\obj\Debug\net10.0\ref\DivisiblePorCinco.dll

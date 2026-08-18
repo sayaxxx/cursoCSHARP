@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\bin\Debug\net10.0\PositivoONegativo.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\bin\Debug\net10.0\PositivoONegativo.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\bin\Debug\net10.0\PositivoONegativo.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\bin\Debug\net10.0\PositivoONegativo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\bin\Debug\net10.0\PositivoONegativo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\refint\PositivoONegativo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\PositivoONegativo.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\PositivoONegativo\obj\Debug\net10.0\ref\PositivoONegativo.dll

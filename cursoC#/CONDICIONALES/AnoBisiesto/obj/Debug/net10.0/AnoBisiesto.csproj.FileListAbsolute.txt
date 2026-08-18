@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\bin\Debug\net10.0\AnoBisiesto.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\bin\Debug\net10.0\AnoBisiesto.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\bin\Debug\net10.0\AnoBisiesto.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\bin\Debug\net10.0\AnoBisiesto.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\bin\Debug\net10.0\AnoBisiesto.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\refint\AnoBisiesto.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\AnoBisiesto.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\AnoBisiesto\obj\Debug\net10.0\ref\AnoBisiesto.dll

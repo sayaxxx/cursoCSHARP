@@ -1,24 +1,21 @@
 # ==========================================
-# Configuración e Historial de IDEs / Editores
+# Archivos de Compilación y Salida (Basura C#)
+# ==========================================
+**/[Bb]in/
+**/[Ob]j/
+**/out/
+**/[L|l]og/
+**/[L|l]ogs/
+
+# ==========================================
+# Configuración de IDEs / Editores
 # ==========================================
 .vs/
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
+.vscode/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-
-# ==========================================
-# Archivos de Compilación y Salida (Basura)
-# ==========================================
-[Bb]in/
-[Ob]j/
-out/
-[L|l]og/
-[L|l]ogs/
 
 # ==========================================
 # Paquetes NuGet y Cache

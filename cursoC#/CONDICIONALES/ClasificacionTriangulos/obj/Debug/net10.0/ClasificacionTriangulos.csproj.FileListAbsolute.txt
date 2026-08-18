@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\bin\Debug\net10.0\ClasificacionTriangulos.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\bin\Debug\net10.0\ClasificacionTriangulos.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\bin\Debug\net10.0\ClasificacionTriangulos.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\bin\Debug\net10.0\ClasificacionTriangulos.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\bin\Debug\net10.0\ClasificacionTriangulos.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\refint\ClasificacionTriangulos.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ClasificacionTriangulos.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\ClasificacionTriangulos\obj\Debug\net10.0\ref\ClasificacionTriangulos.dll

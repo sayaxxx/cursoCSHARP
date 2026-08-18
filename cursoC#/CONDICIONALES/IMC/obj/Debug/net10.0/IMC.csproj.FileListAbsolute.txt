@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\bin\Debug\net10.0\IMC.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\bin\Debug\net10.0\IMC.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\bin\Debug\net10.0\IMC.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\bin\Debug\net10.0\IMC.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\bin\Debug\net10.0\IMC.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\refint\IMC.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\IMC.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\IMC\obj\Debug\net10.0\ref\IMC.dll

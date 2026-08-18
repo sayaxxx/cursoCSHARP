@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\bin\Debug\net10.0\MayorEdad.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\bin\Debug\net10.0\MayorEdad.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\bin\Debug\net10.0\MayorEdad.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\bin\Debug\net10.0\MayorEdad.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\bin\Debug\net10.0\MayorEdad.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\refint\MayorEdad.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\MayorEdad.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\CONDICIONALES\MayorEdad\obj\Debug\net10.0\ref\MayorEdad.dll

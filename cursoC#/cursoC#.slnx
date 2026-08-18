@@ -5,6 +5,13 @@
   <Project Path="BASICOS/PresentacionPersonal/PresentacionPersonal.csproj" Id="36f55372-a3a0-49a1-bc6f-320374644828" />
   <Project Path="BASICOS/PromedioTresNotas/PromedioTresNotas.csproj" Id="630ace1e-5c50-4d67-9cec-8cec84bf3334" />
   <Project Path="Calculadora/Calculadora.csproj" />
+  <Project Path="CONDICIONALES/AlertaTemperatura/AlertaTemperatura.csproj" Id="80f5b682-2e64-4a1f-b659-71c5537f1b2e" />
+  <Project Path="CONDICIONALES/AnoBisiesto/AnoBisiesto.csproj" Id="f9e18e7e-ae50-45b2-a45a-b86ddded5194" />
+  <Project Path="CONDICIONALES/ClasificacionTriangulos/ClasificacionTriangulos.csproj" Id="a6084346-1aa2-4107-8c23-31ebbe0208b7" />
+  <Project Path="CONDICIONALES/DivisiblePorCinco/DivisiblePorCinco.csproj" Id="57b555f1-8f4e-495f-a58d-76958d7b9a50" />
+  <Project Path="CONDICIONALES/IMC/IMC.csproj" Id="fb530903-e122-4bd6-88a4-db0ee43ecc87" />
+  <Project Path="CONDICIONALES/MayorEdad/MayorEdad.csproj" Id="f293a6b1-782b-4a05-ac2d-9887ae208785" />
+  <Project Path="CONDICIONALES/PositivoONegativo/PositivoONegativo.csproj" Id="12cfcd4e-d178-4620-a82e-01aed3726633" />
   <Project Path="DiferenciaWrite/DiferenciaWrite.csproj" />
   <Project Path="EdadFutura/EdadFutura.csproj" Id="fd43f47c-05ab-4a85-a5a6-173b4da36338" />
   <Project Path="FichaAprendiz/FichaAprendiz.csproj" />
