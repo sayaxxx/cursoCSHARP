@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\bin\Debug\net10.0\ValidarEmail.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\bin\Debug\net10.0\ValidarEmail.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\bin\Debug\net10.0\ValidarEmail.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\bin\Debug\net10.0\ValidarEmail.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\bin\Debug\net10.0\ValidarEmail.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\refint\ValidarEmail.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ValidarEmail.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\ValidarEmail\obj\Debug\net10.0\ref\ValidarEmail.dll

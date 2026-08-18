@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\bin\Debug\net10.0\DiaParImpar.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\bin\Debug\net10.0\DiaParImpar.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\bin\Debug\net10.0\DiaParImpar.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\bin\Debug\net10.0\DiaParImpar.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\bin\Debug\net10.0\DiaParImpar.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\refint\DiaParImpar.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\DiaParImpar.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DiaParImpar\obj\Debug\net10.0\ref\DiaParImpar.dll

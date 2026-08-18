@@ -20,5 +20,13 @@
   <Project Path="IVA/IVA.csproj" Id="fa995360-3e08-4e3a-9c1a-600b10ee6631" />
   <Project Path="SaludoPersonalizado/SaludoPersonalizado.csproj" />
   <Project Path="SumaNumeros/SumaNumeros.csproj" />
+  <Project Path="SWITCH/DIA/DIA.csproj" Id="f7cad60f-60e3-437a-af16-0026195c0ca0" />
+  <Project Path="SWITCH/DiaParImpar/DiaParImpar.csproj" Id="7092aad5-d861-4385-a9cf-7c79298cda43" />
+  <Project Path="SWITCH/NivelRiesgo/NivelRiesgo.csproj" Id="fd2a104a-2b82-4865-acee-f67115da4a30" />
+  <Project Path="SWITCH/NombreMes/NombreMes.csproj" Id="5db0fc64-7f75-44df-9c82-c485a52f2416" />
+  <Project Path="SWITCH/Semaforo/Semaforo.csproj" Id="e2b22606-636b-4f4e-97e6-d1b35f465a2c" />
+  <Project Path="SWITCH/TamanoPizza/TamanoPizza.csproj" Id="bb37318a-93d2-4498-b7c0-be8435a5d54d" />
+  <Project Path="SWITCH/TipoVehiculo/TipoVehiculo.csproj" Id="284b9008-ad8d-4d19-a2a4-89b43d17787a" />
+  <Project Path="SWITCH/ValidarEmail/ValidarEmail.csproj" Id="885a360c-7baf-4d33-8b65-5d3658b2a25f" />
   <Project Path="Variables/Variables.csproj" />
 </Solution>

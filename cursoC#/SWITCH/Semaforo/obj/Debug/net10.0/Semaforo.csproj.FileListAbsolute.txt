@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\bin\Debug\net10.0\Semaforo.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\bin\Debug\net10.0\Semaforo.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\bin\Debug\net10.0\Semaforo.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\bin\Debug\net10.0\Semaforo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\bin\Debug\net10.0\Semaforo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\refint\Semaforo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\Semaforo.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\Semaforo\obj\Debug\net10.0\ref\Semaforo.dll

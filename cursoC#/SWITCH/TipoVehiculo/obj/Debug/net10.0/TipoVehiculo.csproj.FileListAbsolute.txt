@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\bin\Debug\net10.0\TipoVehiculo.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\bin\Debug\net10.0\TipoVehiculo.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\bin\Debug\net10.0\TipoVehiculo.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\bin\Debug\net10.0\TipoVehiculo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\bin\Debug\net10.0\TipoVehiculo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\refint\TipoVehiculo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\TipoVehiculo.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\TipoVehiculo\obj\Debug\net10.0\ref\TipoVehiculo.dll

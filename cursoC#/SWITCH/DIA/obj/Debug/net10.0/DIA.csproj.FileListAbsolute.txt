@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\bin\Debug\net10.0\DIA.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\bin\Debug\net10.0\DIA.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\bin\Debug\net10.0\DIA.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\bin\Debug\net10.0\DIA.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\bin\Debug\net10.0\DIA.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\refint\DIA.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\DIA.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SWITCH\DIA\obj\Debug\net10.0\ref\DIA.dll
