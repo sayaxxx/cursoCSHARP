@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="AreaRectangulo/AreaRectangulo.csproj" />
+  <Project Path="Calculadora/Calculadora.csproj" />
+  <Project Path="DiferenciaWrite/DiferenciaWrite.csproj" />
+  <Project Path="FichaAprendiz/FichaAprendiz.csproj" />
+  <Project Path="holaMundo/holaMundo.csproj" />
+  <Project Path="Interpolacion/Interpolacion.csproj" />
+  <Project Path="SaludoPersonalizado/SaludoPersonalizado.csproj" />
+  <Project Path="SumaNumeros/SumaNumeros.csproj" />
+  <Project Path="Variables/Variables.csproj" />
+</Solution>

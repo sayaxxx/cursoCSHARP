@@ -1,0 +1,14 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\bin\Debug\net10.0\Variables.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\bin\Debug\net10.0\Variables.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\bin\Debug\net10.0\Variables.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\bin\Debug\net10.0\Variables.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\bin\Debug\net10.0\Variables.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\refint\Variables.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\Variables.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\Variables\obj\Debug\net10.0\ref\Variables.dll

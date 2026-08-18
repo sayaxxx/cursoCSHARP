@@ -1,0 +1,37 @@
+# ==========================================
+# Configuración e Historial de IDEs / Editores
+# ==========================================
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ==========================================
+# Archivos de Compilación y Salida (Basura)
+# ==========================================
+[Bb]in/
+[Ob]j/
+out/
+[L|l]og/
+[L|l]ogs/
+
+# ==========================================
+# Paquetes NuGet y Cache
+# ==========================================
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+.nuget/
+
+# ==========================================
+# Sistema Operativo
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini

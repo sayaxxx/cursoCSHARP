@@ -1,0 +1,14 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\bin\Debug\net10.0\SaludoPersonalizado.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\bin\Debug\net10.0\SaludoPersonalizado.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\bin\Debug\net10.0\SaludoPersonalizado.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\bin\Debug\net10.0\SaludoPersonalizado.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\bin\Debug\net10.0\SaludoPersonalizado.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\refint\SaludoPersonalizado.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\SaludoPersonalizado.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\SaludoPersonalizado\obj\Debug\net10.0\ref\SaludoPersonalizado.dll

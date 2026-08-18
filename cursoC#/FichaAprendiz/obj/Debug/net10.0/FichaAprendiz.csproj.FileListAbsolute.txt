@@ -1,0 +1,14 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\bin\Debug\net10.0\FichaAprendiz.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\bin\Debug\net10.0\FichaAprendiz.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\bin\Debug\net10.0\FichaAprendiz.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\bin\Debug\net10.0\FichaAprendiz.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\bin\Debug\net10.0\FichaAprendiz.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\refint\FichaAprendiz.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\FichaAprendiz.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\FichaAprendiz\obj\Debug\net10.0\ref\FichaAprendiz.dll

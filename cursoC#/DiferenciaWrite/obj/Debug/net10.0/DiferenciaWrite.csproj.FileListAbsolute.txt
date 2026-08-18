@@ -1,0 +1,14 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\bin\Debug\net10.0\DiferenciaWrite.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\bin\Debug\net10.0\DiferenciaWrite.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\bin\Debug\net10.0\DiferenciaWrite.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\bin\Debug\net10.0\DiferenciaWrite.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\bin\Debug\net10.0\DiferenciaWrite.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\refint\DiferenciaWrite.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\DiferenciaWrite.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\DiferenciaWrite\obj\Debug\net10.0\ref\DiferenciaWrite.dll

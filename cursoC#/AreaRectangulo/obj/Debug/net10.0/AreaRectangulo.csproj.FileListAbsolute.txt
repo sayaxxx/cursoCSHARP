@@ -1,0 +1,14 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\bin\Debug\net10.0\AreaRectangulo.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\bin\Debug\net10.0\AreaRectangulo.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\bin\Debug\net10.0\AreaRectangulo.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\bin\Debug\net10.0\AreaRectangulo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\bin\Debug\net10.0\AreaRectangulo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\refint\AreaRectangulo.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\AreaRectangulo.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\AreaRectangulo\obj\Debug\net10.0\ref\AreaRectangulo.dll
