@@ -1,0 +1,14 @@
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\bin\Debug\net10.0\Abstraccion.exe
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\bin\Debug\net10.0\Abstraccion.deps.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\bin\Debug\net10.0\Abstraccion.runtimeconfig.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\bin\Debug\net10.0\Abstraccion.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\bin\Debug\net10.0\Abstraccion.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.AssemblyInfoInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.AssemblyInfo.cs
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.csproj.CoreCompileInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\refint\Abstraccion.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\Abstraccion.genruntimeconfig.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Abstraccion\Abstraccion\obj\Debug\net10.0\ref\Abstraccion.dll
