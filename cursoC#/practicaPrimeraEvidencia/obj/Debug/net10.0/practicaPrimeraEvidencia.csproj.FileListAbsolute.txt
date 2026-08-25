@@ -1,0 +1,15 @@
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\bin\Debug\net10.0\practicaPrimeraEvidencia.exe
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\bin\Debug\net10.0\practicaPrimeraEvidencia.deps.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\bin\Debug\net10.0\practicaPrimeraEvidencia.runtimeconfig.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\bin\Debug\net10.0\practicaPrimeraEvidencia.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\bin\Debug\net10.0\practicaPrimeraEvidencia.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.AssemblyInfoInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.AssemblyInfo.cs
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.csproj.CoreCompileInputs.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.sourcelink.json
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\refint\practicaPrimeraEvidencia.dll
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.pdb
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\practicaPrimeraEvidencia.genruntimeconfig.cache
+C:\Users\hipho\Downloads\C# RODOLFO\cursoC#\practicaPrimeraEvidencia\obj\Debug\net10.0\ref\practicaPrimeraEvidencia.dll

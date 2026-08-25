@@ -18,6 +18,7 @@
   <Project Path="holaMundo/holaMundo.csproj" />
   <Project Path="Interpolacion/Interpolacion.csproj" />
   <Project Path="IVA/IVA.csproj" Id="fa995360-3e08-4e3a-9c1a-600b10ee6631" />
+  <Project Path="practicaPrimeraEvidencia/practicaPrimeraEvidencia.csproj" Id="5f075440-471f-4c32-9b16-342ba3e9abfd" />
   <Project Path="SaludoPersonalizado/SaludoPersonalizado.csproj" />
   <Project Path="SumaNumeros/SumaNumeros.csproj" />
   <Project Path="SWITCH/DIA/DIA.csproj" Id="f7cad60f-60e3-437a-af16-0026195c0ca0" />

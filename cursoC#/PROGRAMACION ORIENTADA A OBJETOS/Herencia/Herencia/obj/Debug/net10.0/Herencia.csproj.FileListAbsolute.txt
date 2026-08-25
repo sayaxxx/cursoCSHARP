@@ -1,0 +1,14 @@
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.AssemblyInfoInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.AssemblyInfo.cs
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.csproj.CoreCompileInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\bin\Debug\net10.0\Herencia.exe
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\bin\Debug\net10.0\Herencia.deps.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\bin\Debug\net10.0\Herencia.runtimeconfig.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\bin\Debug\net10.0\Herencia.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\bin\Debug\net10.0\Herencia.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\refint\Herencia.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\Herencia.genruntimeconfig.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Herencia\Herencia\obj\Debug\net10.0\ref\Herencia.dll
