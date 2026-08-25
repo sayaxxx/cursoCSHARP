@@ -1,0 +1,14 @@
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\bin\Debug\net10.0\Interface.exe
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\bin\Debug\net10.0\Interface.deps.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\bin\Debug\net10.0\Interface.runtimeconfig.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\bin\Debug\net10.0\Interface.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\bin\Debug\net10.0\Interface.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.AssemblyInfoInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.AssemblyInfo.cs
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.csproj.CoreCompileInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\refint\Interface.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\Interface.genruntimeconfig.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\Interface\Interface\obj\Debug\net10.0\ref\Interface.dll
