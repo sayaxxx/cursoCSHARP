@@ -1,0 +1,15 @@
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\bin\Debug\net10.0\CapaNegocio.deps.json
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\bin\Debug\net10.0\CapaNegocio.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\bin\Debug\net10.0\CapaNegocio.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\bin\Debug\net10.0\CapaDatos.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\bin\Debug\net10.0\CapaDatos.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.csproj.AssemblyReference.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.AssemblyInfoInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.AssemblyInfo.cs
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.csproj.CoreCompileInputs.cache
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNego.81B9D119.Up2Date
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\refint\CapaNegocio.dll
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\CapaNegocio.pdb
+D:\Ejercicios C# Arlhey Abadia Jaimes\POO\CrudNCapas\CapaNegocio\obj\Debug\net10.0\ref\CapaNegocio.dll
