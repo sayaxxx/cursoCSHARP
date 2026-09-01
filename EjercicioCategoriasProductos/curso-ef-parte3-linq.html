@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 3: LINQ Esencial - Curso EF Core .NET 10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root{--bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-tertiary:#1a1a2e;--bg-card:#16162a;--accent-primary:#10b981;--accent-secondary:#3b82f6;--accent-warning:#f59e0b;--text-primary:#e8e8f0;--text-secondary:#9898b0;--text-muted:#6a6a85;--border-color:#2a2a45;--code-bg:#0d0d18;--gradient-1:linear-gradient(135deg,#10b981,#3b82f6);--shadow-glow:0 0 40px rgba(16,185,129,0.15)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8;overflow-x:hidden}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 20%,rgba(16,185,129,0.08)0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(59,130,246,0.06)0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
+        @keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent-primary);border-radius:4px}
+        .hero{position:relative;padding:80px 40px 60px;text-align:center;border-bottom:1px solid var(--border-color);overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(16,185,129,0.03),transparent,rgba(59,130,246,0.03),transparent);animation:rotate 20s linear infinite}@keyframes rotate{100%{transform:rotate(360deg)}}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;padding:8px 20px;font-size:.85rem;color:var(--accent-primary);margin-bottom:24px;position:relative;z-index:1}.hero-badge .dot{width:8px;height:8px;background:var(--accent-primary);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .hero h1{font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;position:relative;z-index:1;letter-spacing:-1px}.hero h2{font-size:1.5rem;font-weight:400;color:var(--text-secondary);position:relative;z-index:1}.version-tag{display:inline-block;margin-top:16px;background:var(--gradient-1);color:white;padding:6px 16px;border-radius:6px;font-size:.85rem;font-weight:600;position:relative;z-index:1}
+        .nav-bar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}.nav-bar .logo{font-weight:700;font-size:1.1rem;color:var(--accent-primary)}.nav-links{display:flex;gap:8px}.nav-links a{color:var(--text-secondary);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.85rem;transition:all .3s;border:1px solid transparent}.nav-links a:hover{color:var(--text-primary);background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2)}.nav-links a.active{color:var(--accent-primary);background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3)}
+        .container{max-width:1100px;margin:0 auto;padding:50px 30px}.section{margin-bottom:60px;animation:fadeInUp .6s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-1);border-radius:10px;font-weight:700;font-size:1rem;margin-bottom:16px}.section h2{font-size:2rem;font-weight:700;margin-bottom:8px}.section h3{font-size:1.4rem;font-weight:600;margin:32px 0 16px;color:var(--accent-primary);display:flex;align-items:center;gap:10px}.section h4{font-size:1.1rem;font-weight:600;margin:24px 0 12px;color:var(--accent-secondary)}.section p{color:var(--text-secondary);font-size:1rem;margin-bottom:16px;line-height:1.9}
+        .card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:32px;margin:24px 0;transition:all .3s;position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);opacity:0;transition:opacity .3s}.card:hover{border-color:rgba(16,185,129,0.3);box-shadow:var(--shadow-glow);transform:translateY(-2px)}.card:hover::before{opacity:1}.card-title{font-size:1.2rem;font-weight:600;margin-bottom:12px}.card p{color:var(--text-secondary);margin-bottom:12px}
+        .info-box{padding:20px 24px;border-radius:12px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}.info-box.tip{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:var(--accent-primary)}.info-box.warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--accent-warning)}.info-box.important{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent-secondary)}.info-box .icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}.info-box .content{flex:1}.info-box .content strong{display:block;margin-bottom:4px}.info-box .content p{margin:0;font-size:.92rem;line-height:1.7}
+        .code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;margin:20px 0;overflow:hidden}.code-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(16,185,129,0.08);border-bottom:1px solid var(--border-color)}.code-header .file-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent-primary);font-weight:500}.code-header .lang{font-size:.75rem;color:var(--text-muted);background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:4px}.code-dots{display:flex;gap:6px}.code-dots span{width:10px;height:10px;border-radius:50%}.code-dots span:nth-child(1){background:#ff5f57}.code-dots span:nth-child(2){background:#ffbd2e}.code-dots span:nth-child(3){background:#28c840}
+        pre{padding:24px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.7;color:var(--text-primary)}
+        .kw{color:#c792ea}.type{color:#ffcb6b}.str{color:#c3e88d}.cmt{color:#546e7a;font-style:italic}.num{color:#f78c6c}.method{color:#82aaff}.attr{color:#ff5370}.param{color:#e8e8f0}.op{color:#89ddff}.prop{color:#f07178}.namespace{color:#ffcb6b}.var{color:#e8e8f0}
+        .styled-list{list-style:none;padding:0;margin:16px 0}.styled-list li{padding:10px 0 10px 30px;position:relative;color:var(--text-secondary);border-bottom:1px solid rgba(42,42,69,0.5)}.styled-list li:last-child{border-bottom:none}.styled-list li::before{content:'▹';position:absolute;left:8px;color:var(--accent-primary);font-weight:bold}
+        .step{display:flex;gap:20px;margin:24px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;transition:all .3s}.step:hover{border-color:rgba(16,185,129,0.3)}.step-num{flex-shrink:0;width:44px;height:44px;background:var(--gradient-1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}.step-content h4{margin:0 0 8px}.step-content p{margin:0;font-size:.92rem}
+        .footer{text-align:center;padding:40px;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.85rem}.footer .nav-buttons{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto 30px;gap:16px}.footer .nav-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;color:var(--text-primary);text-decoration:none;font-weight:500;transition:all .3s}.footer .nav-btn:hover{border-color:var(--accent-primary);background:rgba(16,185,129,0.1);transform:translateY(-2px)}.footer .nav-btn.next{background:var(--gradient-1);border:none;color:white}.footer .nav-btn.next:hover{box-shadow:0 0 30px rgba(16,185,129,0.3)}
+        table.ctrl{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border-color)}
+        table.ctrl th{background:var(--bg-tertiary);color:var(--accent-primary);padding:10px 14px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border-color)}
+        table.ctrl td{padding:9px 14px;color:var(--text-secondary);font-size:.88rem;background:var(--bg-card);border-bottom:1px solid rgba(42,42,69,0.4)}
+        table.ctrl td:first-child{color:var(--accent-warning);font-weight:600}
+        .concept-card{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-left:4px solid var(--accent-secondary);border-radius:12px;padding:24px;margin:20px 0}.concept-card h4{color:var(--accent-secondary);margin-bottom:12px;display:flex;align-items:center;gap:8px}.concept-card .analogy{background:rgba(16,185,129,0.08);padding:12px 16px;border-radius:8px;margin:12px 0;font-style:italic;color:var(--text-primary)}
+        @media(max-width:768px){.hero h1{font-size:2rem}.hero h2{font-size:1.1rem}.container{padding:30px 16px}.card{padding:20px}pre{padding:16px;font-size:.78rem}.nav-bar{flex-direction:column;gap:12px}.nav-links{flex-wrap:wrap;justify-content:center}.footer .nav-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-badge"><span class="dot"></span> Curso Práctico · Parte 3 de 6</div>
+        <h1>LINQ Esencial</h1>
+        <h2>Consulta datos con C# puro: sin cadenas SQL frágiles, con autocompletado y seguridad</h2>
+        <span class="version-tag">🔍 .NET 10 · LINQ · Comparación SQL vs C#</span>
+    </header>
+    <nav class="nav-bar">
+        <div class="logo">📘 Curso NaturVida</div>
+        <div class="nav-links">
+            <a href="curso-ef-parte0-proyecto.html">①</a>
+            <a href="curso-ef-parte1-intro-ef.html">②</a>
+            <a href="curso-ef-parte2-migrations.html">③</a>
+            <a href="#" class="active">④ LINQ</a>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="section">
+            <div class="section-number">1</div>
+            <h2>🔄 ¿Qué es LINQ? (Tu nuevo "SQL" en C#)</h2>
+            <p><strong>LINQ (Language Integrated Query)</strong> es la forma en que C# te permite hacer consultas directamente en el código, sin escribir cadenas de texto como <code>"SELECT * FROM..."</code>.</p>
+            
+            <table class="ctrl">
+                <thead><tr><th>SQL (Lo que sabes)</th><th>LINQ en C# (Lo que harás)</th><th>¿Qué cambia?</th></tr></thead>
+                <tbody>
+                    <tr><td><code>SELECT * FROM Categorias</code></td><td><code>context.Categorias.ToList()</code></td><td>En lugar de texto, usas objetos reales con autocompletado.</td></tr>
+                    <tr><td><code>WHERE Activo = 1</code></td><td><code>.Where(c => c.Activo)</code></td><td>El compilador verifica errores antes de ejecutar.</td></tr>
+                    <tr><td><code>ORDER BY Nombre ASC</code></td><td><code>.OrderBy(c => c.Nombre)</code></td><td>Seguro contra inyección SQL (no hay cadenas concatenadas).</td></tr>
+                    <tr><td><code>SELECT TOP 1 ...</code></td><td><code>.FirstOrDefault(c => c.Id == 5)</code></td><td>Devuelve <code>null</code> si no encuentra, nunca rompe la app.</td></tr>
+                </tbody>
+            </table>
+
+            <div class="concept-card">
+                <h4>🧩 Entendiendo la sintaxis <code>=></code> (Lambda)</h4>
+                <div class="analogy">💡 Verás mucho esto: <code>c => c.Activo</code>. Léelo como: <strong>"Para cada elemento c, donde c.Activo sea verdadero"</strong>. La <code>c</code> es solo una variable temporal que representa cada fila de la tabla. Puedes ponerle cualquier nombre: <code>x => x.Activo</code> funciona igual.</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">2</div>
+            <h2>📦 Paso 1: Practicar con Listas en Memoria (Sin BD aún)</h2>
+            <p>Antes de tocar la base de datos, vamos a ver cómo funciona LINQ con una lista normal. La sintaxis es <strong>idéntica</strong> en EF Core.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Ejemplo conceptual (puedes probarlo en un archivo .cs temporal)</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">var</span> <span class="var">categorias</span> = <span class="kw">new</span> <span class="type">List</span>&lt;<span class="type">Categoria</span>&gt;
+{
+    <span class="kw">new</span> <span class="type">Categoria</span> { <span class="prop">Id</span> = <span class="num">1</span>, <span class="prop">Nombre</span> = <span class="str">"Tés"</span>, <span class="prop">Activo</span> = <span class="kw">true</span> },
+    <span class="kw">new</span> <span class="type">Categoria</span> { <span class="prop">Id</span> = <span class="num">2</span>, <span class="prop">Nombre</span> = <span class="str">"Cafés"</span>, <span class="prop">Activo</span> = <span class="kw">false</span> },
+    <span class="kw">new</span> <span class="type">Categoria</span> { <span class="prop">Id</span> = <span class="num">3</span>, <span class="prop">Nombre</span> = <span class="str">"Endulzantes"</span>, <span class="prop">Activo</span> = <span class="kw">true</span> }
+};
+
+<span class="cmt">// 1. Traer todas</span>
+<span class="kw">var</span> <span class="var">todas</span> = <span class="var">categorias</span>.<span class="method">ToList</span>();
+
+<span class="cmt">// 2. Filtrar solo las activas</span>
+<span class="kw">var</span> <span class="var">activas</span> = <span class="var">categorias</span>.<span class="method">Where</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Activo</span>).<span class="method">ToList</span>();
+
+<span class="cmt">// 3. Buscar una por ID de forma segura</span>
+<span class="kw">var</span> <span class="var">cafe</span> = <span class="var">categorias</span>.<span class="method">FirstOrDefault</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Id</span> == <span class="num">2</span>);
+
+<span class="cmt">// 4. Ordenar alfabéticamente</span>
+<span class="kw">var</span> <span class="var">ordenadas</span> = <span class="var">categorias</span>.<span class="method">OrderBy</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Nombre</span>).<span class="method">ToList</span>();
+</pre>
+            </div>
+            <div class="info-box tip"><span class="icon">💡</span><div class="content"><strong>Clave mental:</strong>
+                <p>Cuando trabajes con EF Core, solo cambias <code>categorias</code> por <code>context.Categorias</code>. El resto del código es <strong>exactamente igual</strong>.</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">3</div>
+            <h2>🔍 Los 5 Métodos que usarás el 95% del tiempo</h2>
+            <p>No necesitas memorizarlos todos. Con estos 5 haces cualquier consulta CRUD:</p>
+            
+            <table class="ctrl">
+                <thead><tr><th>Método</th><th>Para qué sirve</th><th>Equivalente SQL</th><th>Retorna</th></tr></thead>
+                <tbody>
+                    <tr><td><code>.ToList()</code></td><td>Ejecuta la consulta y carga resultados en memoria</td><td>Final de la consulta</td><td><code>List&lt;T&gt;</code></td></tr>
+                    <tr><td><code>.Where(condición)</code></td><td>Filtra registros</td><td><code>WHERE ...</code></td><td>IQueryable (se encadena)</td></tr>
+                    <tr><td><code>.FirstOrDefault(condición)</code></td><td>Busca el primer resultado que cumpla</td><td><code>SELECT TOP 1 ...</code></td><td>Objeto T o <code>null</code></td></tr>
+                    <tr><td><code>.OrderBy(propiedad)</code></td><td>Ordena ascendente</td><td><code>ORDER BY ... ASC</code></td><td>IQueryable (se encadena)</td></tr>
+                    <tr><td><code>.Any()</code> / <code>.Count()</code></td><td>Verifica existencia o cuenta registros</td><td><code>EXISTS</code> / <code>COUNT(*)</code></td><td><code>bool</code> / <code>int</code></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-number">4</div>
+            <h2>⚡ Concepto Crítico: Ejecución Diferida</h2>
+            <p>Este es el error #1 de los principiantes. En ADO.NET, cuando ejecutabas <code>cmd.ExecuteReader()</code>, la consulta iba <strong>inmediatamente</strong> a SQL Server. Con LINQ, <strong>la consulta se pospone hasta que realmente pides los datos</strong>.</p>
+            
+            <div class="concept-card">
+                <h4>🛒 La Analogía de la Lista de Compras</h4>
+                <div class="analogy">💡 Escribir <code>context.Categorias.Where(c => c.Activo)</code> es como anotar en un papel: "quiero solo las categorías activas". <strong>Aún no fuiste al supermercado.</strong> La consulta real solo ocurre cuando llamas a <code>.ToList()</code>, <code>.FirstOrDefault()</code> o haces un <code>foreach</code>. Ahí es cuando EF Core genera el SQL y va a la BD.</div>
+            </div>
+
+            <p><strong>¿Por qué es útil?</strong> Te permite construir consultas paso a paso sin ejecutar múltiples viajes a la base de datos:</p>
+            <pre style="background:var(--code-bg);padding:16px;border-radius:8px;margin:16px 0">
+<span class="cmt">// Paso 1: Empiezas la consulta (no va a la BD aún)</span>
+<span class="kw">var</span> <span class="var">consulta</span> = <span class="var">context</span>.<span class="prop">Categorias</span>.<span class="method">Where</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Activo</span>);
+
+<span class="cmt">// Paso 2: Agregas ordenamiento (sigue sin ir a la BD)</span>
+<span class="var">consulta</span> = <span class="var">consulta</span>.<span class="method">OrderBy</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Nombre</span>);
+
+<span class="cmt">// Paso 3: Aquí SÍ va a la BD y trae los datos</span>
+<span class="kw">var</span> <span class="var">resultado</span> = <span class="var">consulta</span>.<span class="method">ToList</span>();
+</pre>
+        </section>
+
+        <section class="section">
+            <div class="section-number">5</div>
+            <h2>💻 Cómo se ve en tu proyecto (Contexto Real)</h2>
+            <p>Una vez que tengas tu <code>NaturVidaContext</code> configurado, así es como usarás LINQ en tu capa de lógica o UI:</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Ejemplo real con DbContext</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Data</span>;
+
+<span class="cmt">// 1. Listar todo para un DataGridView</span>
+<span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+<span class="kw">var</span> <span class="var">lista</span> = <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">OrderBy</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Nombre</span>).<span class="method">ToList</span>();
+<span class="var">dgvCategorias</span>.<span class="prop">DataSource</span> = <span class="var">lista</span>;
+
+<span class="cmt">// 2. Buscar por ID para editar</span>
+<span class="kw">var</span> <span class="var">categoria</span> = <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">FirstOrDefault</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Id</span> == <span class="num">5</span>);
+
+<span class="cmt">// 3. Verificar si ya existe un nombre</span>
+<span class="kw">bool</span> <span class="var">existe</span> = <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">Any</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Nombre</span> == <span class="str">"Tés"</span>);
+</pre>
+            </div>
+            <div class="info-box important"><span class="icon">⚠️</span><div class="content"><strong>Siempre usa <code>using</code> con el Contexto:</strong>
+                <p><code>using var db = new NaturVidaContext();</code> asegura que la conexión se cierre automáticamente aunque ocurra un error. Es igual a cerrar un <code>SqlConnection</code> manualmente, pero automático y seguro.</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">6</div>
+            <h2>✅ Checklist de Verificación</h2>
+            <div class="card" style="background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.2)">
+                <div class="card-title">📝 Antes de continuar al CRUD real</div>
+                <ul class="styled-list">
+                    <li>☑ Entendí que LINQ reemplaza las cadenas SQL por métodos C# tipados.</li>
+                    <li>☑ Sé leer <code>c => c.Condicion</code> como "donde c.Condicion sea verdadera".</li>
+                    <li>☑ Conozco los 5 métodos esenciales: <code>ToList</code>, <code>Where</code>, <code>FirstOrDefault</code>, <code>OrderBy</code>, <code>Any</code>.</li>
+                    <li>☑ Comprendí la "Ejecución Diferida": la BD no se consulta hasta llamar a <code>ToList()</code> o similar.</li>
+                    <li>☑ Sé que debo envolver el contexto en <code>using</code> para cerrar conexiones automáticamente.</li>
+                </ul>
+                <p style="margin-top:16px;color:var(--accent-primary);font-weight:600">📂 Parte 4: CRUD Completo (1 Tabla). Uniremos todo: Insertar, Listar, Editar y Eliminar usando EF Core, manteniendo tu estructura de carpetas (Entities, DAL, BLL, UI).</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="nav-buttons">
+            <a href="curso-ef-parte2-migrations.html" class="nav-btn">← Anterior: BD</a>
+            <a href="curso-ef-parte4-crud-completo.html" class="nav-btn next">Siguiente: CRUD Completo (1 Tabla) →</a>
+        </div>
+        <p>Curso Transición .NET 10 + EF Core · Parte 3 de 6 · LINQ Esencial</p>
+        <p style="margin-top:8px;color:var(--text-muted)">Hecho con 💚 para quienes aprenden paso a paso, sin prisas ni saltos</p>
+    </footer>
+</body>
+</html>

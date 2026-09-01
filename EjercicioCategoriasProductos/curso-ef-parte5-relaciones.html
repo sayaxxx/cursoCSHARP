@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 5: Relación 1:N (Categoría → Producto) - Curso EF Core .NET 10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root{--bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-tertiary:#1a1a2e;--bg-card:#16162a;--accent-primary:#10b981;--accent-secondary:#3b82f6;--accent-warning:#f59e0b;--text-primary:#e8e8f0;--text-secondary:#9898b0;--text-muted:#6a6a85;--border-color:#2a2a45;--code-bg:#0d0d18;--gradient-1:linear-gradient(135deg,#10b981,#3b82f6);--shadow-glow:0 0 40px rgba(16,185,129,0.15)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8;overflow-x:hidden}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 20%,rgba(16,185,129,0.08)0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(59,130,246,0.06)0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
+        @keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent-primary);border-radius:4px}
+        .hero{position:relative;padding:80px 40px 60px;text-align:center;border-bottom:1px solid var(--border-color);overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(16,185,129,0.03),transparent,rgba(59,130,246,0.03),transparent);animation:rotate 20s linear infinite}@keyframes rotate{100%{transform:rotate(360deg)}}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;padding:8px 20px;font-size:.85rem;color:var(--accent-primary);margin-bottom:24px;position:relative;z-index:1}.hero-badge .dot{width:8px;height:8px;background:var(--accent-primary);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .hero h1{font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;position:relative;z-index:1;letter-spacing:-1px}.hero h2{font-size:1.5rem;font-weight:400;color:var(--text-secondary);position:relative;z-index:1}.version-tag{display:inline-block;margin-top:16px;background:var(--gradient-1);color:white;padding:6px 16px;border-radius:6px;font-size:.85rem;font-weight:600;position:relative;z-index:1}
+        .nav-bar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}.nav-bar .logo{font-weight:700;font-size:1.1rem;color:var(--accent-primary)}.nav-links{display:flex;gap:8px}.nav-links a{color:var(--text-secondary);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.85rem;transition:all .3s;border:1px solid transparent}.nav-links a:hover{color:var(--text-primary);background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2)}.nav-links a.active{color:var(--accent-primary);background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3)}
+        .container{max-width:1100px;margin:0 auto;padding:50px 30px}.section{margin-bottom:60px;animation:fadeInUp .6s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-1);border-radius:10px;font-weight:700;font-size:1rem;margin-bottom:16px}.section h2{font-size:2rem;font-weight:700;margin-bottom:8px}.section h3{font-size:1.4rem;font-weight:600;margin:32px 0 16px;color:var(--accent-primary);display:flex;align-items:center;gap:10px}.section h4{font-size:1.1rem;font-weight:600;margin:24px 0 12px;color:var(--accent-secondary)}.section p{color:var(--text-secondary);font-size:1rem;margin-bottom:16px;line-height:1.9}
+        .card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:32px;margin:24px 0;transition:all .3s;position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);opacity:0;transition:opacity .3s}.card:hover{border-color:rgba(16,185,129,0.3);box-shadow:var(--shadow-glow);transform:translateY(-2px)}.card:hover::before{opacity:1}.card-title{font-size:1.2rem;font-weight:600;margin-bottom:12px}.card p{color:var(--text-secondary);margin-bottom:12px}
+        .info-box{padding:20px 24px;border-radius:12px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}.info-box.tip{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:var(--accent-primary)}.info-box.warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--accent-warning)}.info-box.important{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent-secondary)}.info-box .icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}.info-box .content{flex:1}.info-box .content strong{display:block;margin-bottom:4px}.info-box .content p{margin:0;font-size:.92rem;line-height:1.7}
+        .code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;margin:20px 0;overflow:hidden}.code-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(16,185,129,0.08);border-bottom:1px solid var(--border-color)}.code-header .file-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent-primary);font-weight:500}.code-header .lang{font-size:.75rem;color:var(--text-muted);background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:4px}.code-dots{display:flex;gap:6px}.code-dots span{width:10px;height:10px;border-radius:50%}.code-dots span:nth-child(1){background:#ff5f57}.code-dots span:nth-child(2){background:#ffbd2e}.code-dots span:nth-child(3){background:#28c840}
+        pre{padding:24px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.7;color:var(--text-primary)}
+        .kw{color:#c792ea}.type{color:#ffcb6b}.str{color:#c3e88d}.cmt{color:#546e7a;font-style:italic}.num{color:#f78c6c}.method{color:#82aaff}.attr{color:#ff5370}.param{color:#e8e8f0}.op{color:#89ddff}.prop{color:#f07178}.namespace{color:#ffcb6b}.var{color:#e8e8f0}
+        .styled-list{list-style:none;padding:0;margin:16px 0}.styled-list li{padding:10px 0 10px 30px;position:relative;color:var(--text-secondary);border-bottom:1px solid rgba(42,42,69,0.5)}.styled-list li:last-child{border-bottom:none}.styled-list li::before{content:'▹';position:absolute;left:8px;color:var(--accent-primary);font-weight:bold}
+        .step{display:flex;gap:20px;margin:24px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;transition:all .3s}.step:hover{border-color:rgba(16,185,129,0.3)}.step-num{flex-shrink:0;width:44px;height:44px;background:var(--gradient-1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}.step-content h4{margin:0 0 8px}.step-content p{margin:0;font-size:.92rem}
+        .footer{text-align:center;padding:40px;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.85rem}.footer .nav-buttons{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto 30px;gap:16px}.footer .nav-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;color:var(--text-primary);text-decoration:none;font-weight:500;transition:all .3s}.footer .nav-btn:hover{border-color:var(--accent-primary);background:rgba(16,185,129,0.1);transform:translateY(-2px)}.footer .nav-btn.next{background:var(--gradient-1);border:none;color:white}.footer .nav-btn.next:hover{box-shadow:0 0 30px rgba(16,185,129,0.3)}
+        table.ctrl{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border-color)}
+        table.ctrl th{background:var(--bg-tertiary);color:var(--accent-primary);padding:10px 14px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border-color)}
+        table.ctrl td{padding:9px 14px;color:var(--text-secondary);font-size:.88rem;background:var(--bg-card);border-bottom:1px solid rgba(42,42,69,0.4)}
+        table.ctrl td:first-child{color:var(--accent-warning);font-weight:600}
+        .concept-card{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-left:4px solid var(--accent-secondary);border-radius:12px;padding:24px;margin:20px 0}.concept-card h4{color:var(--accent-secondary);margin-bottom:12px;display:flex;align-items:center;gap:8px}.concept-card .analogy{background:rgba(16,185,129,0.08);padding:12px 16px;border-radius:8px;margin:12px 0;font-style:italic;color:var(--text-primary)}
+        @media(max-width:768px){.hero h1{font-size:2rem}.hero h2{font-size:1.1rem}.container{padding:30px 16px}.card{padding:20px}pre{padding:16px;font-size:.78rem}.nav-bar{flex-direction:column;gap:12px}.nav-links{flex-wrap:wrap;justify-content:center}.footer .nav-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-badge"><span class="dot"></span> Curso Práctico · Parte 5 de 6</div>
+        <h1>Relación 1:N (Categoría → Producto)</h1>
+        <h2>Conectando tablas, usando Include() y ComboBoxes vinculados a claves foráneas</h2>
+        <span class="version-tag">🔗 .NET 10 · FK · Navegación UI</span>
+    </header>
+    <nav class="nav-bar">
+        <div class="logo">📘 Curso NaturVida</div>
+        <div class="nav-links">
+            <a href="curso-ef-parte0-proyecto.html">①</a>
+            <a href="curso-ef-parte1-intro-ef.html">②</a>
+            <a href="curso-ef-parte2-migrations.html">③</a>
+            <a href="curso-ef-parte3-linq.html">④</a>
+            <a href="curso-ef-parte4-crud-completo.html">⑤</a>
+            <a href="#" class="active">⑥ Relación</a>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="section">
+            <div class="section-number">1</div>
+            <h2>🔄 ¿Cómo se manejan las relaciones en EF Core?</h2>
+            <p>En ADO.NET, para ver el nombre de una categoría junto a un producto, escribías un <code>INNER JOIN</code> en tu <code>SELECT</code>. En EF Core, esto se reemplaza con <strong>Propiedades de Navegación</strong> y el método <code>.Include()</code>.</p>
+            <div class="concept-card">
+                <h4>📂 La Analogía de la Carpeta y el Archivo</h4>
+                <div class="analogy">💡 Piensa en <code>Categoria</code> como una carpeta y <code>Producto</code> como un archivo dentro. El archivo no necesita saber el nombre de la carpeta, solo guarda su <strong>IdCarpeta</strong> (Foreign Key). Pero si quieres ver el nombre, le preguntas al sistema: "dame este archivo e incluye también su carpeta". Eso es <code>.Include()</code>.</div>
+            </div>
+            <p>EF Core usa dos cosas para esto:</p>
+            <ul class="styled-list">
+                <li><strong>Clave Foránea (FK):</strong> Una propiedad <code>int</code>. Por convención, EF Core prefiere el nombre <code>CategoriaId</code> (Entidad + Id).</li>
+                <li><strong>Propiedad de Navegación:</strong> Una propiedad del tipo de la otra clase (ej: <code>Categoria? Categoria</code>). EF Core la usa para cargar el objeto relacionado automáticamente.</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <div class="section-number">2</div>
+            <h2>📦 Paso 1: Crear la Entidad Producto</h2>
+            <p>Crea <code>Producto.cs</code> en la carpeta <code>Models/</code>. Nota la corrección en el nombre de la FK y la ausencia de <code>virtual</code>.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Models/Producto.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">public class</span> <span class="type">Producto</span>
+{
+    <span class="kw">public</span> <span class="type">int</span> <span class="prop">Id</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public</span> <span class="type">string</span> <span class="prop">Nombre</span> { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="type">string</span>.<span class="prop">Empty</span>;
+    <span class="kw">public</span> <span class="type">decimal</span> <span class="prop">Precio</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public</span> <span class="type">int</span> <span class="prop">Stock</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+
+    <span class="cmt">// 🔑 CLAVE FORÁNEA (Foreign Key)</span>
+    <span class="cmt">// EF Core reconoce automáticamente "NombreEntidadId"</span>
+    <span class="kw">public</span> <span class="type">int</span> <span class="prop">CategoriaId</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+
+    <span class="cmt">// 🧭 PROPIEDAD DE NAVEGACIÓN</span>
+    <span class="cmt">// Permite acceder al objeto Categoría completo desde un Producto</span>
+    <span class="kw">public</span> <span class="type">Categoria</span>? <span class="prop">Categoria</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+}
+</pre>
+            </div>
+            <div class="info-box tip"><span class="icon">💡</span><div class="content"><strong>¿Por qué no <code>virtual</code>?</strong>
+                <p>En versiones antiguas era necesario para el Lazy Loading. En EF Core moderno, usamos <strong>Eager Loading</strong> explícito con <code>.Include()</code>. Quitarlo simplifica el modelo y evita proxies innecesarios.</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">3</div>
+            <h2>🗄️ Paso 2: Actualizar Contexto y Migrar</h2>
+            <p>Agrega la nueva tabla al contexto y aplica los cambios a la BD.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Data/NaturVidaContext.cs</span><span class="lang">Modificación</span></div>
+<pre>
+<span class="kw">public</span> <span class="type">DbSet</span>&lt;<span class="type">Producto</span>&gt; <span class="prop">Productos</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+</pre>
+            </div>
+            <p>Ejecuta en la Consola del Administrador de Paquetes:</p>
+            <pre style="margin-top:12px;background:var(--code-bg);padding:12px;border-radius:8px"><span class="key">Add-Migration</span> <span class="str">"AgregarTablaProductos"</span>
+<span class="key">Update-Database</span>
+</pre>
+            <div class="info-box important"><span class="icon">🔍</span><div class="content"><strong>¿Qué creó EF Core automáticamente?</strong>
+                <p>Al detectar <code>CategoriaId</code> y la navegación <code>Categoria</code>, EF Core generó:</p>
+                <ul class="styled-list">
+                    <li>Tabla <code>Productos</code> con columnas Id, Nombre, Precio, Stock, CategoriaId</li>
+                    <li>Restricción <code>FOREIGN KEY</code> que vincula <code>CategoriaId</code> con <code>Categorias.Id</code></li>
+                    <li><strong>No escribiste <code>CREATE TABLE</code> ni <code>ALTER TABLE</code>. EF Core lo hizo por ti.</strong></li>
+                </ul>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">4</div>
+            <h2>⚙️ Paso 3: DAL para Producto</h2>
+            <p>Aquí está la clave: usar <code>.Include()</code> para traer la categoría junto al producto.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Data/ProductoDAL.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">using</span> <span class="namespace">Microsoft.EntityFrameworkCore</span>;
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.Data</span>;
+
+<span class="kw">public class</span> <span class="type">ProductoDAL</span>
+{
+    <span class="kw">public</span> <span class="type">List</span>&lt;<span class="type">Producto</span>&gt; <span class="method">ObtenerTodos</span>()
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="cmt">// .Include() carga la categoría relacionada automáticamente</span>
+        <span class="kw">return</span> <span class="var">db</span>.<span class="prop">Productos</span>.<span class="method">Include</span>(<span class="param">p</span> => <span class="param">p</span>.<span class="prop">Categoria</span>)
+                           .<span class="method">OrderBy</span>(<span class="param">p</span> => <span class="param">p</span>.<span class="prop">Nombre</span>)
+                           .<span class="method">ToList</span>();
+    }
+
+    <span class="kw">public</span> <span class="type">Producto</span>? <span class="method">ObtenerPorId</span>(<span class="type">int</span> <span class="param">id</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="kw">return</span> <span class="var">db</span>.<span class="prop">Productos</span>.<span class="method">Include</span>(<span class="param">p</span> => <span class="param">p</span>.<span class="prop">Categoria</span>)
+                           .<span class="method">FirstOrDefault</span>(<span class="param">p</span> => <span class="param">p</span>.<span class="prop">Id</span> == <span class="param">id</span>);
+    }
+
+    <span class="kw">public</span> <span class="type">void</span> <span class="method">Insertar</span>(<span class="type">Producto</span> <span class="param">prod</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="var">db</span>.<span class="prop">Productos</span>.<span class="method">Add</span>(<span class="param">prod</span>);
+        <span class="var">db</span>.<span class="method">SaveChanges</span>();
+    }
+
+    <span class="kw">public</span> <span class="type">void</span> <span class="method">Actualizar</span>(<span class="type">Producto</span> <span class="param">prod</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="var">db</span>.<span class="prop">Productos</span>.<span class="method">Update</span>(<span class="param">prod</span>);
+        <span class="var">db</span>.<span class="method">SaveChanges</span>();
+    }
+
+    <span class="kw">public</span> <span class="type">void</span> <span class="method">Eliminar</span>(<span class="type">int</span> <span class="param">id</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="kw">var</span> <span class="var">prod</span> = <span class="var">db</span>.<span class="prop">Productos</span>.<span class="method">Find</span>(<span class="param">id</span>);
+        <span class="kw">if</span> (<span class="var">prod</span> != <span class="kw">null</span>) { <span class="var">db</span>.<span class="prop">Productos</span>.<span class="method">Remove</span>(<span class="var">prod</span>); <span class="var">db</span>.<span class="method">SaveChanges</span>(); }
+    }
+}
+</pre>
+            </div>
+            <p>La <strong>BLL</strong> es idéntica a la de Categoría (validaciones + llamada al DAL). Puedes crearla en <code>Logic/ProductoBLL.cs</code> usando el mismo patrón.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-number">5</div>
+            <h2>🖥️ Paso 4: UI Completa con CRUD y ComboBox Vinculado</h2>
+            <p>El desafío aquí es: mostrar nombres de categorías al usuario, pero guardar el <code>CategoriaId</code> (número) en la base de datos. Además, agregamos los eventos de clic para editar y eliminar.</p>
+            <table class="ctrl">
+                <thead><tr><th>Control</th><th>Nombre (Name)</th><th>Propiedades Clave</th></tr></thead>
+                <tbody>
+                    <tr><td>ComboBox</td><td><code>cboCategoria</code></td><td>DropDownStyle: DropDownList, Width: 200</td></tr>
+                    <tr><td>DataGridView</td><td><code>dgvProductos</code></td><td>Dock: Top, Height: 300, ReadOnly: True</td></tr>
+                    <tr><td>TextBox/NumericUpDown</td><td><code>txtNombre</code>, <code>txtPrecio</code>, <code>numStock</code></td><td>Estándar</td></tr>
+                    <tr><td>Label</td><td><code>lblId</code></td><td>Visible: False</td></tr>
+                </tbody>
+            </table>
+            
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">UI/frmProductos.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Logic</span>; <span class="cmt">// O tu namespace BLL</span>
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.UI</span>;
+
+<span class="kw">public partial class</span> <span class="type">frmProductos</span> : <span class="type">Form</span>
+{
+    <span class="kw">private readonly</span> <span class="type">CategoriaBLL</span> <span class="var">catBll</span> = <span class="kw">new</span>();
+    <span class="kw">private readonly</span> <span class="type">ProductoBLL</span> <span class="var">prodBll</span> = <span class="kw">new</span>();
+
+    <span class="kw">public</span> <span class="method">frmProductos</span>()
+    {
+        <span class="method">InitializeComponent</span>();
+        <span class="cmt">// Suscribir eventos</span>
+        <span class="var">dgvProductos</span>.<span class="prop">CellClick</span> += <span class="var">dgvProductos</span>_CellClick;
+    }
+
+    <span class="kw">private void</span> <span class="method">frmProductos_Load</span>(<span class="type">object</span> <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>)
+    {
+        <span class="method">CargarCategorias</span>();
+        <span class="method">CargarGrilla</span>();
+    }
+
+    <span class="kw">private void</span> <span class="method">CargarCategorias</span>()
+    {
+        <span class="cmt">// 1. Cargar ComboBox de categorías</span>
+        <span class="kw">var</span> <span class="var">categorias</span> = <span class="var">catBll</span>.<span class="method">Listar</span>();
+        <span class="var">cboCategoria</span>.<span class="prop">DataSource</span> = <span class="var">categorias</span>;
+        <span class="var">cboCategoria</span>.<span class="prop">DisplayMember</span> = <span class="str">"Nombre"</span>;   <span class="cmt">// Lo que ve el usuario</span>
+        <span class="var">cboCategoria</span>.<span class="prop">ValueMember</span> = <span class="str">"Id"</span>;         <span class="cmt">// El valor oculto (ID)</span>
+    }
+
+    <span class="kw">private void</span> <span class="method">CargarGrilla</span>()
+    {
+        <span class="var">dgvProductos</span>.<span class="prop">DataSource</span> = <span class="var">prodBll</span>.<span class="method">Listar</span>();
+        <span class="var">dgvProductos</span>.<span class="prop">Columns</span>[<span class="str">"Id"</span>].<span class="prop">Visible</span> = <span class="kw">false</span>;
+        <span class="var">dgvProductos</span>.<span class="prop">Columns</span>[<span class="str">"CategoriaId"</span>].<span class="prop">Visible</span> = <span class="kw">false</span>;
+        <span class="var">dgvProductos</span>.<span class="prop">Columns</span>[<span class="str">"Categoria"</span>].<span class="prop">Visible</span> = <span class="kw">false</span>;
+        <span class="method">Limpiar</span>();
+    }
+
+    <span class="cmt">// 🔘 Evento al hacer clic en una fila del DataGridView</span>
+    <span class="kw">private void</span> <span class="method">dgvProductos_CellClick</span>(<span class="type">object</span>? <span class="param">s</span>, <span class="type">DataGridViewCellEventArgs</span> <span class="param">e</span>)
+    {
+        <span class="kw">if</span> (<span class="var">dgvProductos</span>.<span class="prop">CurrentRow</span> == <span class="kw">null</span>) <span class="kw">return</span>;
+        
+        <span class="kw">var</span> <span class="var">prod</span> = (<span class="type">Producto</span>)<span class="var">dgvProductos</span>.<span class="prop">CurrentRow</span>.<span class="prop">DataBoundItem</span>;
+        <span class="var">lblId</span>.<span class="prop">Text</span> = <span class="var">prod</span>.<span class="prop">Id</span>.<span class="method">ToString</span>();
+        <span class="var">txtNombre</span>.<span class="prop">Text</span> = <span class="var">prod</span>.<span class="prop">Nombre</span>;
+        <span class="var">txtPrecio</span>.<span class="prop">Text</span> = <span class="var">prod</span>.<span class="prop">Precio</span>.<span class="method">ToString</span>();
+        <span class="var">numStock</span>.<span class="prop">Value</span> = <span class="var">prod</span>.<span class="prop">Stock</span>;
+        
+        <span class="cmt">// Seleccionar la categoría correcta en el ComboBox</span>
+        <span class="var">cboCategoria</span>.<span class="prop">SelectedValue</span> = <span class="var">prod</span>.<span class="prop">CategoriaId</span>;
+    }
+
+    <span class="kw">private void</span> <span class="method">btnGuardar_Click</span>(<span class="type">object</span> <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>)
+    {
+        <span class="cmt">// 2. Obtener ID seleccionado del ComboBox</span>
+        <span class="kw">int</span> <span class="var">idCatSeleccionada</span> = <span class="var">cboCategoria</span>.<span class="prop">SelectedValue</span> != <span class="kw">null</span> 
+            ? (<span class="type">int</span>)<span class="var">cboCategoria</span>.<span class="prop">SelectedValue</span> : <span class="num">0</span>;
+
+        <span class="kw">var</span> <span class="var">prod</span> = <span class="kw">new</span> <span class="type">Producto</span>
+        {
+            Id = <span class="type">int</span>.<span class="method">TryParse</span>(<span class="var">lblId</span>.<span class="prop">Text</span>, <span class="kw">out</span> <span class="type">int</span> <span class="var">id</span>) ? <span class="var">id</span> : <span class="num">0</span>,
+            Nombre = <span class="var">txtNombre</span>.<span class="prop">Text</span>,
+            Precio = <span class="var">txtPrecio</span>.<span class="prop">Text</span> != <span class="str">""</span> ? <span class="type">decimal</span>.<span class="method">Parse</span>(<span class="var">txtPrecio</span>.<span class="prop">Text</span>) : <span class="num">0</span>,
+            Stock = (<span class="type">int</span>)<span class="var">numStock</span>.<span class="prop">Value</span>,
+            CategoriaId = <span class="var">idCatSeleccionada</span>
+        };
+
+        <span class="kw">string</span> <span class="var">msg</span> = <span class="var">prod</span>.<span class="prop">Id</span> > <span class="num">0</span> ? <span class="var">prodBll</span>.<span class="method">Guardar</span>(<span class="var">prod</span>) : <span class="var">prodBll</span>.<span class="method">Insertar</span>(<span class="var">prod</span>);
+        <span class="type">MessageBox</span>.<span class="method">Show</span>(<span class="var">msg</span>);
+        <span class="method">CargarGrilla</span>();
+    }
+
+    <span class="kw">private void</span> <span class="method">btnEliminar_Click</span>(<span class="type">object</span> <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>)
+    {
+        <span class="kw">if</span> (<span class="var">lblId</span>.<span class="prop">Text</span> == <span class="str">""</span> || <span class="var">lblId</span>.<span class="prop">Text</span> == <span class="str">"0"</span>) <span class="kw">return</span>;
+        
+        <span class="kw">var</span> <span class="var">res</span> = <span class="type">MessageBox</span>.<span class="method">Show</span>(<span class="str">"¿Eliminar producto?"</span>, <span class="str">"Confirmar"</span>, <span class="type">MessageBoxButtons</span>.<span class="prop">YesNo</span>, <span class="type">MessageBoxIcon</span>.<span class="prop">Question</span>);
+        <span class="kw">if</span> (<span class="var">res</span> == <span class="type">DialogResult</span>.<span class="prop">Yes</span>)
+        {
+            <span class="var">prodBll</span>.<span class="method">Eliminar</span>(<span class="type">int</span>.<span class="method">Parse</span>(<span class="var">lblId</span>.<span class="prop">Text</span>));
+            <span class="method">CargarGrilla</span>();
+        }
+    }
+
+    <span class="kw">private void</span> <span class="method">btnNuevo_Click</span>(<span class="type">object</span> <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>) => <span class="method">Limpiar</span>();
+
+    <span class="kw">private void</span> <span class="method">Limpiar</span>()
+    {
+        <span class="var">lblId</span>.<span class="prop">Text</span> = <span class="str">""</span>;
+        <span class="var">txtNombre</span>.<span class="prop">Clear</span>();
+        <span class="var">txtPrecio</span>.<span class="prop">Clear</span>;
+        <span class="var">numStock</span>.<span class="prop">Value</span> = <span class="num">0</span>;
+        <span class="cmt">// Resetear ComboBox al primer elemento</span>
+        <span class="kw">if</span> (<span class="var">cboCategoria</span>.<span class="prop">Items</span>.<span class="prop">Count</span> > <span class="num">0</span>) <span class="var">cboCategoria</span>.<span class="prop">SelectedIndex</span> = <span class="num">0</span>;
+        <span class="var">dgvProductos</span>.<span class="prop">ClearSelection</span>();
+    }
+}
+</pre>
+            </div>
+            <div class="info-box tip"><span class="icon">💡</span><div class="content"><strong>¿Cómo funciona SelectedValue?</strong>
+                <p>Al vincular el ComboBox a una lista de objetos (<code>DataSource</code>), WinForms busca automáticamente el objeto cuyo <code>ValueMember</code> coincida con el valor que asignes a <code>SelectedValue</code>. No necesitas hacer bucles ni búsquedas manuales.</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">6</div>
+            <h2>✅ Checklist de Verificación</h2>
+            <div class="card" style="background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.2)">
+                <div class="card-title">📝 Prueba Final de Relaciones</div>
+                <ul class="styled-list">
+                    <li>☑ Ejecutas <code>Update-Database</code> y se crea la tabla <code>Productos</code> con FK a <code>Categorias</code>.</li>
+                    <li>☑ En el formulario de productos, el ComboBox muestra nombres de categorías, no IDs.</li>
+                    <li>☑ Guardas un producto con una categoría seleccionada y se inserta correctamente.</li>
+                    <li>☑ Al seleccionar un producto en la grilla, el ComboBox vuelve a mostrar su categoría original y los datos cargan en los TextBox.</li>
+                    <li>☑ Puedes editar un producto existente y actualizar su categoría.</li>
+                    <li>☑ Puedes eliminar un producto.</li>
+                </ul>
+                <p style="margin-top:16px;color:var(--accent-primary);font-weight:600">📂 Parte 6 (Final): UI con Menú Lateral y Panel Derecho. Uniremos todo en una interfaz profesional, conectaremos los botones del menú a los formularios, y cerraremos el curso con un checklist de producción.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="nav-buttons">
+            <a href="curso-ef-parte4-crud-completo.html" class="nav-btn">← Anterior: CRUD</a>
+            <a href="curso-ef-parte6-ui-final.html" class="nav-btn next">Siguiente: UI Final y Cierre →</a>
+        </div>
+        <p>Curso Transición .NET 10 + EF Core · Parte 5 de 6 · Relación 1:N</p>
+        <p style="margin-top:8px;color:var(--text-muted)">Hecho con 💚 para quienes aprenden paso a paso, sin prisas ni saltos</p>
+    </footer>
+</body>
+</html>

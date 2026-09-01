@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 1: Configuración y Primer Contacto - Curso EF Core .NET 10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root{--bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-tertiary:#1a1a2e;--bg-card:#16162a;--accent-primary:#10b981;--accent-secondary:#3b82f6;--accent-warning:#f59e0b;--text-primary:#e8e8f0;--text-secondary:#9898b0;--text-muted:#6a6a85;--border-color:#2a2a45;--code-bg:#0d0d18;--gradient-1:linear-gradient(135deg,#10b981,#3b82f6);--shadow-glow:0 0 40px rgba(16,185,129,0.15)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8;overflow-x:hidden}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 20%,rgba(16,185,129,0.08)0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(59,130,246,0.06)0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
+        @keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent-primary);border-radius:4px}
+        .hero{position:relative;padding:80px 40px 60px;text-align:center;border-bottom:1px solid var(--border-color);overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(16,185,129,0.03),transparent,rgba(59,130,246,0.03),transparent);animation:rotate 20s linear infinite}@keyframes rotate{100%{transform:rotate(360deg)}}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;padding:8px 20px;font-size:.85rem;color:var(--accent-primary);margin-bottom:24px;position:relative;z-index:1}.hero-badge .dot{width:8px;height:8px;background:var(--accent-primary);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .hero h1{font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;position:relative;z-index:1;letter-spacing:-1px}.hero h2{font-size:1.5rem;font-weight:400;color:var(--text-secondary);position:relative;z-index:1}.version-tag{display:inline-block;margin-top:16px;background:var(--gradient-1);color:white;padding:6px 16px;border-radius:6px;font-size:.85rem;font-weight:600;position:relative;z-index:1}
+        .nav-bar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}.nav-bar .logo{font-weight:700;font-size:1.1rem;color:var(--accent-primary)}.nav-links{display:flex;gap:8px}.nav-links a{color:var(--text-secondary);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.85rem;transition:all .3s;border:1px solid transparent}.nav-links a:hover{color:var(--text-primary);background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2)}.nav-links a.active{color:var(--accent-primary);background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3)}
+        .container{max-width:1100px;margin:0 auto;padding:50px 30px}.section{margin-bottom:60px;animation:fadeInUp .6s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-1);border-radius:10px;font-weight:700;font-size:1rem;margin-bottom:16px}.section h2{font-size:2rem;font-weight:700;margin-bottom:8px}.section h3{font-size:1.4rem;font-weight:600;margin:32px 0 16px;color:var(--accent-primary);display:flex;align-items:center;gap:10px}.section h4{font-size:1.1rem;font-weight:600;margin:24px 0 12px;color:var(--accent-secondary)}.section p{color:var(--text-secondary);font-size:1rem;margin-bottom:16px;line-height:1.9}
+        .card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:32px;margin:24px 0;transition:all .3s;position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);opacity:0;transition:opacity .3s}.card:hover{border-color:rgba(16,185,129,0.3);box-shadow:var(--shadow-glow);transform:translateY(-2px)}.card:hover::before{opacity:1}.card-title{font-size:1.2rem;font-weight:600;margin-bottom:12px}.card p{color:var(--text-secondary);margin-bottom:12px}
+        .info-box{padding:20px 24px;border-radius:12px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}.info-box.tip{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:var(--accent-primary)}.info-box.warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--accent-warning)}.info-box.important{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent-secondary)}.info-box .icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}.info-box .content{flex:1}.info-box .content strong{display:block;margin-bottom:4px}.info-box .content p{margin:0;font-size:.92rem;line-height:1.7}
+        .code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;margin:20px 0;overflow:hidden}.code-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(16,185,129,0.08);border-bottom:1px solid var(--border-color)}.code-header .file-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent-primary);font-weight:500}.code-header .lang{font-size:.75rem;color:var(--text-muted);background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:4px}.code-dots{display:flex;gap:6px}.code-dots span{width:10px;height:10px;border-radius:50%}.code-dots span:nth-child(1){background:#ff5f57}.code-dots span:nth-child(2){background:#ffbd2e}.code-dots span:nth-child(3){background:#28c840}
+        pre{padding:24px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.7;color:var(--text-primary)}
+        .kw{color:#c792ea}.type{color:#ffcb6b}.str{color:#c3e88d}.cmt{color:#546e7a;font-style:italic}.num{color:#f78c6c}.method{color:#82aaff}.attr{color:#ff5370}.param{color:#e8e8f0}.op{color:#89ddff}.prop{color:#f07178}.namespace{color:#ffcb6b}.var{color:#e8e8f0}
+        .styled-list{list-style:none;padding:0;margin:16px 0}.styled-list li{padding:10px 0 10px 30px;position:relative;color:var(--text-secondary);border-bottom:1px solid rgba(42,42,69,0.5)}.styled-list li:last-child{border-bottom:none}.styled-list li::before{content:'▹';position:absolute;left:8px;color:var(--accent-primary);font-weight:bold}
+        .step{display:flex;gap:20px;margin:24px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;transition:all .3s}.step:hover{border-color:rgba(16,185,129,0.3)}.step-num{flex-shrink:0;width:44px;height:44px;background:var(--gradient-1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}.step-content h4{margin:0 0 8px}.step-content p{margin:0;font-size:.92rem}
+        .footer{text-align:center;padding:40px;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.85rem}.footer .nav-buttons{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto 30px;gap:16px}.footer .nav-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;color:var(--text-primary);text-decoration:none;font-weight:500;transition:all .3s}.footer .nav-btn:hover{border-color:var(--accent-primary);background:rgba(16,185,129,0.1);transform:translateY(-2px)}.footer .nav-btn.next{background:var(--gradient-1);border:none;color:white}.footer .nav-btn.next:hover{box-shadow:0 0 30px rgba(16,185,129,0.3)}
+        table.ctrl{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border-color)}
+        table.ctrl th{background:var(--bg-tertiary);color:var(--accent-primary);padding:10px 14px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border-color)}
+        table.ctrl td{padding:9px 14px;color:var(--text-secondary);font-size:.88rem;background:var(--bg-card);border-bottom:1px solid rgba(42,42,69,0.4)}
+        table.ctrl td:first-child{color:var(--accent-warning);font-weight:600}
+        .concept-card{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-left:4px solid var(--accent-secondary);border-radius:12px;padding:24px;margin:20px 0}.concept-card h4{color:var(--accent-secondary);margin-bottom:12px;display:flex;align-items:center;gap:8px}.concept-card .analogy{background:rgba(16,185,129,0.08);padding:12px 16px;border-radius:8px;margin:12px 0;font-style:italic;color:var(--text-primary)}
+        @media(max-width:768px){.hero h1{font-size:2rem}.hero h2{font-size:1.1rem}.container{padding:30px 16px}.card{padding:20px}pre{padding:16px;font-size:.78rem}.nav-bar{flex-direction:column;gap:12px}.nav-links{flex-wrap:wrap;justify-content:center}.footer .nav-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-badge"><span class="dot"></span> Curso Práctico · Parte 1 de 6</div>
+        <h1>Configuración y Primer Contacto</h1>
+        <h2>Instalando EF Core, Entidades y el "Cerebro" de la Base de Datos</h2>
+        <span class="version-tag">🛠️ .NET 10 · Setup Inicial · DbContext</span>
+    </header>
+    <nav class="nav-bar">
+        <div class="logo">📘 Curso NaturVida</div>
+        <div class="nav-links">
+            <a href="curso-ef-parte0-proyecto.html">①</a>
+            <a href="#" class="active">② Setup</a>
+            <a href="curso-ef-parte2-migrations.html">③ Migrations</a>
+            <a href="curso-ef-parte3-linq.html">④ LINQ</a>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="section">
+            <div class="section-number">1</div>
+            <h2>🛠️ Paso 1: Instalación de Herramientas (NuGet)</h2>
+            <p>Antes de escribir código, necesitamos instalar las librerías de EF Core. En tu proyecto de Visual Studio:</p>
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>Abrir NuGet</h4>
+                    <p>Clic derecho en el proyecto <strong>NaturVida.App</strong> → <strong>Manage NuGet Packages</strong>.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>Instalar Motor de SQL Server</h4>
+                    <p>Ve a la pestaña <strong>Browse</strong> y busca: <code>Microsoft.EntityFrameworkCore.SqlServer</code>. Instala la versión más reciente (v8 o v9).</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>Instalar Herramientas de Consola</h4>
+                    <p>Busca también: <code>Microsoft.EntityFrameworkCore.Tools</code>. Esto es necesario para crear las bases de datos desde la consola.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">2</div>
+            <h2>🧩 Paso 2: ¿Qué es el DbContext?</h2>
+            <p>Antes de crear archivos, entendamos qué vamos a hacer. En ADO.NET, tú creabas manualmente:</p>
+            <ul class="styled-list">
+                <li><code>SqlConnection</code>: Para abrir la puerta a la base de datos.</li>
+                <li><code>SqlCommand</code>: Para enviar instrucciones SQL escritas a mano.</li>
+                <li><code>SqlDataAdapter/Reader</code>: Para leer los resultados y convertirlos a objetos o DataTables.</li>
+            </ul>
+            
+            <div class="concept-card">
+                <h4>🧠 EF Core une todo en un solo objeto: El DbContext</h4>
+                <div class="analogy">💡 El <code>DbContext</code> es como el "Gerente de Sucursal". Tú no necesitas hablar con el banco (SqlConnection), ni llenar formularios (SqlCommand), ni contar el dinero manualmente (DataReader). Tú solo le dices al Gerente: "Dame la lista de categorías" y él hace todo el trabajo sucio internamente.</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">3</div>
+            <h2>📁 Paso 3: Creando la Estructura de Carpetas</h2>
+            <p>En tu proyecto, crea estas carpetas vacías (Clic derecho en el proyecto → Add → New Folder):</p>
+            <ul class="styled-list">
+                <li><strong>Models/</strong> → Aquí vivirán tus clases (Entidades) que representan las tablas.</li>
+                <li><strong>Data/</strong> → Aquí vivirá el Contexto (la conexión inteligente).</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <div class="section-number">4</div>
+            <h2>📝 Paso 4: La Entidad (Tabla)</h2>
+            <p>Crea una clase llamada <code>Categoria.cs</code> dentro de la carpeta <code>Models/</code>.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Models/Categoria.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="cmt">// Esta clase representará una fila en la tabla 'Categorias'</span>
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">public class</span> <span class="type">Categoria</span>
+{
+    <span class="cmt">// EF Core reconoce automáticamente propiedades llamadas 'Id'</span>
+    <span class="cmt">// como la llave primaria (Primary Key) de la tabla.</span>
+    <span class="kw">public</span> <span class="type">int</span> <span class="prop">Id</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+
+    <span class="cmt">// Esta propiedad se convertirá en una columna NVARCHAR</span>
+    <span class="kw">public</span> <span class="type">string</span> <span class="prop">Nombre</span> { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="type">string</span>.<span class="prop">Empty</span>;
+
+    <span class="cmt">// Esta propiedad será una columna BIT (true/false)</span>
+    <span class="kw">public</span> <span class="type">bool</span> <span class="prop">Activo</span> { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="kw">true</span>;
+}
+</pre>
+            </div>
+            <div class="info-box tip"><span class="icon">💡</span><div class="content"><strong>Nota importante:</strong>
+                <p>Observa que <strong>no hay código de base de datos aquí</strong>. Es una clase C# pura y simple. EF Core es lo suficientemente inteligente para mirar esta clase y deducir: "Ah, necesito una tabla con una columna Id numérica y una columna Nombre de texto".</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">5</div>
+            <h2>🧠 Paso 5: El Contexto (La Conexión)</h2>
+            <p>Crea una clase llamada <code>NaturVidaContext.cs</code> dentro de la carpeta <code>Data/</code>.</p>
+            
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Data/NaturVidaContext.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="cmt">// Necesitamos esta librería para usar DbContext</span>
+<span class="kw">using</span> <span class="namespace">Microsoft.EntityFrameworkCore</span>;
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.Data</span>;
+
+<span class="cmt">// El Contexto debe heredar de la clase base DbContext de EF Core</span>
+<span class="kw">public class</span> <span class="type">NaturVidaContext</span> : <span class="type">DbContext</span>
+{
+    <span class="cmt">// DbSet representa una tabla completa en la base de datos.</span>
+    <span class="cmt">// 'Categorias' será el nombre de la tabla en SQL Server.</span>
+    <span class="kw">public</span> <span class="type">DbSet</span>&lt;<span class="type">Categoria</span>&gt; <span class="prop">Categorias</span> { <span class="kw">get</span>; <span class="kw">set</span>; }
+
+    <span class="cmt">// Aquí configuramos la conexión a la base de datos</span>
+    <span class="kw">protected override void</span> <span class="method">OnConfiguring</span>(<span class="type">DbContextOptionsBuilder</span> <span class="param">optionsBuilder</span>)
+    {
+        <span class="cmt">// Indicamos que usaremos SQL Server y le damos la cadena de conexión</span>
+        <span class="cmt">// (localdb)\mssqllocaldb es la base de datos ligera que viene con Visual Studio</span>
+        <span class="param">optionsBuilder</span>.<span class="method">UseSqlServer</span>(<span class="str">"Server=(localdb)\\mssqllocaldb;Database=NaturVidaDB;Trusted_Connection=true;"</span>);
+    }
+}
+</pre>
+            </div>
+
+            <div class="info-box important"><span class="icon">🧩</span><div class="content"><strong>Desglose de conceptos nuevos:</strong>
+                <p><strong>1. DbSet&lt;Categoria&gt;:</strong> Piensa en esto como una "Colección de todas las Categorias". En ADO.NET, para leer datos usabas un <code>SqlDataReader</code>. En EF Core, lees el <code>DbSet</code>.</p>
+                <p><strong>2. OnConfiguring:</strong> Este método se ejecuta automáticamente la primera vez que usas el contexto. Es aquí donde EF Core "aprende" a dónde conectarse.</p>
+                <p><strong>3. LocalDB:</strong> No necesitas instalar un servidor SQL completo. <code>(localdb)\mssqllocaldb</code> funciona inmediatamente. Cuando despliegues la app real, solo cambiarás esta cadena de texto por la de tu servidor.</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">6</div>
+            <h2>🆚 Comparativa: ADO.NET vs EF Core</h2>
+            <p>Para que tu mente haga el cambio de "chip", veamos las equivalencias directas:</p>
+            <table class="ctrl">
+                <thead><tr><th>En ADO.NET (Lo que sabes)</th><th>En Entity Framework Core (Lo que harás)</th></tr></thead>
+                <tbody>
+                    <tr><td><code>SqlConnection</code></td><td><code>NaturVidaContext</code> (El DbContext)</td></tr>
+                    <tr><td><code>SqlCommand</code> ("SELECT * FROM...")</td><td><code>context.Categorias.ToList()</code></td></tr>
+                    <tr><td><code>SqlParameter</code></td><td>Objetos C# (EF Core evita la inyección SQL)</td></tr>
+                    <tr><td><code>SqlDataAdapter.Fill(DataTable)</code></td><td>EF Core rellena listas de objetos automáticamente</td></tr>
+                    <tr><td>Crear tablas manualmente en SSMS</td><td>EF Core crea las tablas por ti (Migrations)</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-number">7</div>
+            <h2>✅ Checklist de Verificación</h2>
+            <div class="card" style="background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.2)">
+                <div class="card-title">📝 Antes de continuar</div>
+                <ul class="styled-list">
+                    <li>☑ Paquetes NuGet instalados correctamente.</li>
+                    <li>☑ Clase <code>Categoria.cs</code> creada en <code>Models/</code> con Id, Nombre y Activo.</li>
+                    <li>☑ Clase <code>NaturVidaContext.cs</code> creada en <code>Data/</code>.</li>
+                    <li>☑ El Contexto tiene el <code>DbSet&lt;Categoria&gt;</code> y el <code>OnConfiguring</code> con la cadena de conexión.</li>
+                    <li>☑ Entendí que el <code>DbContext</code> es el gerente que conecta mis clases C# con SQL Server.</li>
+                </ul>
+                <p style="margin-top:16px;color:var(--accent-primary);font-weight:600">📂 Parte 2: Migrations y Conexión a BD Existente. Aprenderemos el comando mágico que crea la base de datos real en SQL Server basándose en las clases que acabamos de escribir.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="nav-buttons">
+            <a href="curso-ef-parte0-proyecto.html" class="nav-btn">← Anterior: Proyecto</a>
+            <a href="curso-ef-parte2-migrations.html" class="nav-btn next">Siguiente: Migrations (Crear BD) →</a>
+        </div>
+        <p>Curso Transición .NET 10 + EF Core · Parte 1 de 6 · Configuración</p>
+        <p style="margin-top:8px;color:var(--text-muted)">Hecho con 💚 para quienes aprenden paso a paso, sin prisas ni saltos</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 0: Proyecto y Ruta de Aprendizaje - Curso EF Core .NET 10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root{--bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-tertiary:#1a1a2e;--bg-card:#16162a;--accent-primary:#10b981;--accent-secondary:#3b82f6;--accent-warning:#f59e0b;--text-primary:#e8e8f0;--text-secondary:#9898b0;--text-muted:#6a6a85;--border-color:#2a2a45;--code-bg:#0d0d18;--gradient-1:linear-gradient(135deg,#10b981,#3b82f6);--shadow-glow:0 0 40px rgba(16,185,129,0.15)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8;overflow-x:hidden}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 20%,rgba(16,185,129,0.08)0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(59,130,246,0.06)0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
+        @keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent-primary);border-radius:4px}
+        .hero{position:relative;padding:80px 40px 60px;text-align:center;border-bottom:1px solid var(--border-color);overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(16,185,129,0.03),transparent,rgba(59,130,246,0.03),transparent);animation:rotate 20s linear infinite}@keyframes rotate{100%{transform:rotate(360deg)}}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;padding:8px 20px;font-size:.85rem;color:var(--accent-primary);margin-bottom:24px;position:relative;z-index:1}.hero-badge .dot{width:8px;height:8px;background:var(--accent-primary);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .hero h1{font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;position:relative;z-index:1;letter-spacing:-1px}.hero h2{font-size:1.5rem;font-weight:400;color:var(--text-secondary);position:relative;z-index:1}.version-tag{display:inline-block;margin-top:16px;background:var(--gradient-1);color:white;padding:6px 16px;border-radius:6px;font-size:.85rem;font-weight:600;position:relative;z-index:1}
+        .nav-bar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}.nav-bar .logo{font-weight:700;font-size:1.1rem;color:var(--accent-primary)}.nav-links{display:flex;gap:8px}.nav-links a{color:var(--text-secondary);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.85rem;transition:all .3s;border:1px solid transparent}.nav-links a:hover{color:var(--text-primary);background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2)}.nav-links a.active{color:var(--accent-primary);background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3)}
+        .container{max-width:1100px;margin:0 auto;padding:50px 30px}.section{margin-bottom:60px;animation:fadeInUp .6s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-1);border-radius:10px;font-weight:700;font-size:1rem;margin-bottom:16px}.section h2{font-size:2rem;font-weight:700;margin-bottom:8px}.section h3{font-size:1.4rem;font-weight:600;margin:32px 0 16px;color:var(--accent-primary);display:flex;align-items:center;gap:10px}.section h4{font-size:1.1rem;font-weight:600;margin:24px 0 12px;color:var(--accent-secondary)}.section p{color:var(--text-secondary);font-size:1rem;margin-bottom:16px;line-height:1.9}
+        .card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:32px;margin:24px 0;transition:all .3s;position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);opacity:0;transition:opacity .3s}.card:hover{border-color:rgba(16,185,129,0.3);box-shadow:var(--shadow-glow);transform:translateY(-2px)}.card:hover::before{opacity:1}.card-title{font-size:1.2rem;font-weight:600;margin-bottom:12px}.card p{color:var(--text-secondary);margin-bottom:12px}
+        .info-box{padding:20px 24px;border-radius:12px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}.info-box.tip{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:var(--accent-primary)}.info-box.warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--accent-warning)}.info-box.important{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent-secondary)}.info-box .icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}.info-box .content{flex:1}.info-box .content strong{display:block;margin-bottom:4px}.info-box .content p{margin:0;font-size:.92rem;line-height:1.7}
+        .code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;margin:20px 0;overflow:hidden}.code-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(16,185,129,0.08);border-bottom:1px solid var(--border-color)}.code-header .file-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent-primary);font-weight:500}.code-header .lang{font-size:.75rem;color:var(--text-muted);background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:4px}.code-dots{display:flex;gap:6px}.code-dots span{width:10px;height:10px;border-radius:50%}.code-dots span:nth-child(1){background:#ff5f57}.code-dots span:nth-child(2){background:#ffbd2e}.code-dots span:nth-child(3){background:#28c840}
+        pre{padding:24px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.7;color:var(--text-primary)}
+        .kw{color:#c792ea}.type{color:#ffcb6b}.str{color:#c3e88d}.cmt{color:#546e7a;font-style:italic}.num{color:#f78c6c}.method{color:#82aaff}.attr{color:#ff5370}.param{color:#e8e8f0}.op{color:#89ddff}.prop{color:#f07178}.namespace{color:#ffcb6b}.var{color:#e8e8f0}
+        .styled-list{list-style:none;padding:0;margin:16px 0}.styled-list li{padding:10px 0 10px 30px;position:relative;color:var(--text-secondary);border-bottom:1px solid rgba(42,42,69,0.5)}.styled-list li:last-child{border-bottom:none}.styled-list li::before{content:'▹';position:absolute;left:8px;color:var(--accent-primary);font-weight:bold}
+        .step{display:flex;gap:20px;margin:24px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;transition:all .3s}.step:hover{border-color:rgba(16,185,129,0.3)}.step-num{flex-shrink:0;width:44px;height:44px;background:var(--gradient-1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}.step-content h4{margin:0 0 8px}.step-content p{margin:0;font-size:.92rem}
+        .footer{text-align:center;padding:40px;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.85rem}.footer .nav-buttons{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto 30px;gap:16px}.footer .nav-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;color:var(--text-primary);text-decoration:none;font-weight:500;transition:all .3s}.footer .nav-btn:hover{border-color:var(--accent-primary);background:rgba(16,185,129,0.1);transform:translateY(-2px)}.footer .nav-btn.next{background:var(--gradient-1);border:none;color:white}.footer .nav-btn.next:hover{box-shadow:0 0 30px rgba(16,185,129,0.3)}
+        table.ctrl{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border-color)}
+        table.ctrl th{background:var(--bg-tertiary);color:var(--accent-primary);padding:10px 14px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border-color)}
+        table.ctrl td{padding:9px 14px;color:var(--text-secondary);font-size:.88rem;background:var(--bg-card);border-bottom:1px solid rgba(42,42,69,0.4)}
+        table.ctrl td:first-child{color:var(--accent-warning);font-weight:600}
+        .concept-card{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-left:4px solid var(--accent-secondary);border-radius:12px;padding:24px;margin:20px 0}.concept-card h4{color:var(--accent-secondary);margin-bottom:12px;display:flex;align-items:center;gap:8px}.concept-card .analogy{background:rgba(16,185,129,0.08);padding:12px 16px;border-radius:8px;margin:12px 0;font-style:italic;color:var(--text-primary)}
+        @media(max-width:768px){.hero h1{font-size:2rem}.hero h2{font-size:1.1rem}.container{padding:30px 16px}.card{padding:20px}pre{padding:16px;font-size:.78rem}.nav-bar{flex-direction:column;gap:12px}.nav-links{flex-wrap:wrap;justify-content:center}.footer .nav-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-badge"><span class="dot"></span> Curso Práctico · Parte 0 de 6</div>
+        <h1>Proyecto y Ruta de Aprendizaje</h1>
+        <h2>Qué vamos a construir, cómo está organizado y por qué este enfoque</h2>
+        <span class="version-tag">🌿 .NET 10 · EF Core · WinForms</span>
+    </header>
+    <nav class="nav-bar">
+        <div class="logo">📘 Curso NaturVida</div>
+        <div class="nav-links">
+            <a href="#" class="active">① Proyecto</a>
+            <a href="curso-ef-parte1-intro-ef.html">② Intro EF</a>
+            <a href="curso-ef-parte2-migrations.html">③ Migrations</a>
+            <a href="curso-ef-parte3-linq.html">④ LINQ</a>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="section">
+            <div class="section-number">0</div>
+            <h2>🎯 ¿Qué Proyecto Vamos a Construir?</h2>
+            <p>Crearemos un <strong>módulo de gestión de Categorías</strong> para la tienda naturista <strong>NaturVida</strong>. Es el punto de partida perfecto porque:</p>
+            <ul class="styled-list">
+                <li>Solo usa <strong>1 tabla al inicio</strong> (sin relaciones complejas que distraigan).</li>
+                <li>Cubre el <strong>CRUD completo</strong> (Crear, Leer, Actualizar, Eliminar).</li>
+                <li>Permite enfocarnos 100% en <strong>Entity Framework Core + LINQ</strong> sin mezclar patrones avanzados.</li>
+                <li>Una vez dominado, escalaremos a <strong>Productos (2da tabla con FK)</strong> y luego al sistema completo.</li>
+            </ul>
+            <div class="info-box tip"><span class="icon">💡</span><div class="content"><strong>¿Y si mi base de datos ya existe?</strong><p>En la Parte 2 te enseñaré <strong>exactamente cómo conectar EF Core a una BD ya creada</strong> (enfoque Database-First). Comenzamos con Code-First solo para que entiendas cómo EF Core "piensa", pero el 90% de los pasos son idénticos. No perderás tiempo.</p></div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">1</div>
+            <h2>📁 Arquitectura y Estructura de Carpetas</h2>
+            <p>Mantendremos <strong>un solo proyecto WinForms</strong> (como lo hacías con ADO.NET), pero organizaremos el código en carpetas para que sea limpio y profesional:</p>
+            <pre style="background:var(--code-bg);padding:20px;border-radius:12px;margin:20px 0">
+NaturVida.App/                  ← Proyecto WinForms (.NET 10)
+│
+├── 📁 Models/                  ← Entidades (Clases que representan tablas)
+│   └── Categoria.cs
+│
+├── 📁 Data/                    ← DbContext y configuración de conexión
+│   └── NaturVidaContext.cs
+│
+├── 📁 Logic/                   ← Reglas de negocio y validaciones
+│   └── CategoriaBLL.cs
+│
+└── 📁 UI/                      ← Formularios WinForms
+    ├── frmMenu.cs
+    └── frmCategorias.cs
+            </pre>
+            <p><strong>Regla de Oro:</strong> Cada formulario solo habla con `Logic/`. `Logic/` habla con `Data/`. `Data/` habla con EF Core. `Models/` viaja entre todas las capas.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-number">2</div>
+            <h2>🔄 Enfoque: ¿Code-First o Base de Datos Existente?</h2>
+            <div class="concept-card">
+                <h4>🌱 Code-First (Lo que usaremos para aprender)</h4>
+                <div class="analogy">💡 Escribimos la clase C# primero → EF Core crea la tabla automáticamente en SQL Server.</div>
+                <p><strong>Ventaja pedagógica:</strong> Ves cómo EF Core traduce tus clases a SQL, entiendes `Migrations`, y no dependes de scripts manuales.</p>
+            </div>
+            <div class="concept-card">
+                <h4>🗄️ Database-First (Para producción real)</h4>
+                <div class="analogy">💡 Ya tienes la tabla en SQL Server → EF Core genera las clases C# automáticamente.</div>
+                <p><strong>Cómo lo haremos:</strong> En la Parte 2, después de entender Code-First, te mostraré el comando <code>Scaffold-DbContext</code> para que conectes a tu BD existente en 2 pasos. El resto del curso (LINQ, CRUD, UI) es <strong>100% idéntico</strong>.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">3</div>
+            <h2>🗺️ Mapa del Curso (6 Partes Prácticas)</h2>
+            <table class="ctrl">
+                <thead><tr><th>Parte</th><th>Tema</th><th>Qué lograrás</th></tr></thead>
+                <tbody>
+                    <tr><td>①</td><td>Configuración y Primer Contacto</td><td>Instalar EF Core, crear `DbContext`, entender `DbSet`. Equivalente a `SqlConnection`.</td></tr>
+                    <tr><td>②</td><td>Migrations y Conexión a BD Existente</td><td>Crear la tabla automáticamente. Luego, conectar a tu BD ya creada sin perder nada.</td></tr>
+                    <tr><td>③</td><td>LINQ desde Cero (Sin BD aún)</td><td>Comparar `SELECT WHERE ORDER BY` con `.Where().OrderBy()`. Ejercicios visuales con listas.</td></tr>
+                    <tr><td>④</td><td>CRUD Completo (1 Tabla)</td><td>Insertar, Listar, Editar, Eliminar usando EF Core. Capas separadas. Validaciones.</td></tr>
+                    <tr><td>⑤</td><td>Relación 1:N (Categoría → Producto)</td><td>Agregar segunda tabla, `Include()`, `Select`, cargar ComboBox, validar FK.</td></tr>
+                    <tr><td>⑥</td><td>UI Final y Cierre</td><td>Menú lateral, panel derecho dinámico, integración completa, checklist de producción.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-number">4</div>
+            <h2>🛠️ Requisitos Previos</h2>
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Software Necesario</h4><p>Visual Studio 2026 (con carga de desarrollo .NET Desktop), SQL Server (LocalDB o Express), SSMS (opcional pero recomendado).</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Paquetes NuGet (Se instalan en el curso)</h4><ul style="margin-left:20px;margin-top:8px;color:var(--text-secondary)">
+                <li><code>Microsoft.EntityFrameworkCore.SqlServer</code></li>
+                <li><code>Microsoft.EntityFrameworkCore.Tools</code></li>
+            </ul></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Mentalidad</h4><p>Dejas de escribir SQL como texto. Ahora escribes <strong>consultas en C#</strong>. EF Core las traduce. Al principio se siente raro, pero en 2 horas será natural.</p></div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">5</div>
+            <h2>📐 Filosofía de Enseñanza (Cómo lo haremos diferente)</h2>
+            <ul class="styled-list">
+                <li><strong>Cero saltos conceptuales:</strong> Cada término nuevo se compara con su equivalente en ADO.NET.</li>
+                <li><strong>1 tabla primero:</strong> Dominamos el flujo básico antes de agregar relaciones.</li>
+                <li><strong>LINQ explicado con SQL al lado:</strong> Verás exactamente qué genera EF Core detrás de escenas.</li>
+                <li><strong>Carpetas, no proyectos:</strong> Mantendremos tu arquitectura conocida, solo cambiamos el motor de datos.</li>
+                <li><strong>Código limpio, explicaciones fuera:</strong> El código solo tiene lo necesario. Los "porqués" van en el texto.</li>
+            </ul>
+            <div class="info-box important"><span class="icon">🎯</span><div class="content"><strong>Meta Final</strong><p>Al terminar, podrás tomar cualquier tabla de tu empresa, conectarla con EF Core, y tener un CRUD funcional en menos de 1 hora, sin escribir un solo `SqlCommand` ni `SqlDataReader`.</p></div></div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="nav-buttons">
+            <a href="#" class="nav-btn" style="opacity:0.4;pointer-events:none">← Anterior</a>
+            <a href="curso-ef-parte1-intro-ef.html" class="nav-btn next">Siguiente: Introducción a EF Core →</a>
+        </div>
+        <p>Curso Transición .NET 10 + EF Core · Parte 0 de 6 · Proyecto y Ruta</p>
+        <p style="margin-top:8px;color:var(--text-muted)">Hecho con 💚 para quienes aprenden paso a paso, sin prisas ni saltos</p>
+    </footer>
+</body>
+</html>

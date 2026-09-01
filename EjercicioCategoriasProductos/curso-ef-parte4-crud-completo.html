@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 4: CRUD Completo (1 Tabla) - Curso EF Core .NET 10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        :root{--bg-primary:#0a0a0f;--bg-secondary:#12121a;--bg-tertiary:#1a1a2e;--bg-card:#16162a;--accent-primary:#10b981;--accent-secondary:#3b82f6;--accent-warning:#f59e0b;--text-primary:#e8e8f0;--text-secondary:#9898b0;--text-muted:#6a6a85;--border-color:#2a2a45;--code-bg:#0d0d18;--gradient-1:linear-gradient(135deg,#10b981,#3b82f6);--shadow-glow:0 0 40px rgba(16,185,129,0.15)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.8;overflow-x:hidden}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 20%,rgba(16,185,129,0.08)0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(59,130,246,0.06)0%,transparent 50%);z-index:-1;animation:bgPulse 8s ease-in-out infinite alternate}
+        @keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-primary)}::-webkit-scrollbar-thumb{background:var(--accent-primary);border-radius:4px}
+        .hero{position:relative;padding:80px 40px 60px;text-align:center;border-bottom:1px solid var(--border-color);overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(16,185,129,0.03),transparent,rgba(59,130,246,0.03),transparent);animation:rotate 20s linear infinite}@keyframes rotate{100%{transform:rotate(360deg)}}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:50px;padding:8px 20px;font-size:.85rem;color:var(--accent-primary);margin-bottom:24px;position:relative;z-index:1}.hero-badge .dot{width:8px;height:8px;background:var(--accent-primary);border-radius:50%;animation:pulse 2s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .hero h1{font-size:3.2rem;font-weight:800;background:linear-gradient(135deg,#10b981,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;position:relative;z-index:1;letter-spacing:-1px}.hero h2{font-size:1.5rem;font-weight:400;color:var(--text-secondary);position:relative;z-index:1}.version-tag{display:inline-block;margin-top:16px;background:var(--gradient-1);color:white;padding:6px 16px;border-radius:6px;font-size:.85rem;font-weight:600;position:relative;z-index:1}
+        .nav-bar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-color);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}.nav-bar .logo{font-weight:700;font-size:1.1rem;color:var(--accent-primary)}.nav-links{display:flex;gap:8px}.nav-links a{color:var(--text-secondary);text-decoration:none;padding:8px 16px;border-radius:8px;font-size:.85rem;transition:all .3s;border:1px solid transparent}.nav-links a:hover{color:var(--text-primary);background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2)}.nav-links a.active{color:var(--accent-primary);background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3)}
+        .container{max-width:1100px;margin:0 auto;padding:50px 30px}.section{margin-bottom:60px;animation:fadeInUp .6s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section-number{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-1);border-radius:10px;font-weight:700;font-size:1rem;margin-bottom:16px}.section h2{font-size:2rem;font-weight:700;margin-bottom:8px}.section h3{font-size:1.4rem;font-weight:600;margin:32px 0 16px;color:var(--accent-primary);display:flex;align-items:center;gap:10px}.section h4{font-size:1.1rem;font-weight:600;margin:24px 0 12px;color:var(--accent-secondary)}.section p{color:var(--text-secondary);font-size:1rem;margin-bottom:16px;line-height:1.9}
+        .card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:16px;padding:32px;margin:24px 0;transition:all .3s;position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gradient-1);opacity:0;transition:opacity .3s}.card:hover{border-color:rgba(16,185,129,0.3);box-shadow:var(--shadow-glow);transform:translateY(-2px)}.card:hover::before{opacity:1}.card-title{font-size:1.2rem;font-weight:600;margin-bottom:12px}.card p{color:var(--text-secondary);margin-bottom:12px}
+        .info-box{padding:20px 24px;border-radius:12px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}.info-box.tip{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);color:var(--accent-primary)}.info-box.warning{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:var(--accent-warning)}.info-box.important{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent-secondary)}.info-box .icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}.info-box .content{flex:1}.info-box .content strong{display:block;margin-bottom:4px}.info-box .content p{margin:0;font-size:.92rem;line-height:1.7}
+        .code-block{background:var(--code-bg);border:1px solid var(--border-color);border-radius:12px;margin:20px 0;overflow:hidden}.code-header{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(16,185,129,0.08);border-bottom:1px solid var(--border-color)}.code-header .file-name{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--accent-primary);font-weight:500}.code-header .lang{font-size:.75rem;color:var(--text-muted);background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:4px}.code-dots{display:flex;gap:6px}.code-dots span{width:10px;height:10px;border-radius:50%}.code-dots span:nth-child(1){background:#ff5f57}.code-dots span:nth-child(2){background:#ffbd2e}.code-dots span:nth-child(3){background:#28c840}
+        pre{padding:24px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.85rem;line-height:1.7;color:var(--text-primary)}
+        .kw{color:#c792ea}.type{color:#ffcb6b}.str{color:#c3e88d}.cmt{color:#546e7a;font-style:italic}.num{color:#f78c6c}.method{color:#82aaff}.attr{color:#ff5370}.param{color:#e8e8f0}.op{color:#89ddff}.prop{color:#f07178}.namespace{color:#ffcb6b}.var{color:#e8e8f0}
+        .styled-list{list-style:none;padding:0;margin:16px 0}.styled-list li{padding:10px 0 10px 30px;position:relative;color:var(--text-secondary);border-bottom:1px solid rgba(42,42,69,0.5)}.styled-list li:last-child{border-bottom:none}.styled-list li::before{content:'▹';position:absolute;left:8px;color:var(--accent-primary);font-weight:bold}
+        .step{display:flex;gap:20px;margin:24px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;transition:all .3s}.step:hover{border-color:rgba(16,185,129,0.3)}.step-num{flex-shrink:0;width:44px;height:44px;background:var(--gradient-1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem}.step-content h4{margin:0 0 8px}.step-content p{margin:0;font-size:.92rem}
+        .footer{text-align:center;padding:40px;border-top:1px solid var(--border-color);color:var(--text-muted);font-size:.85rem}.footer .nav-buttons{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto 30px;gap:16px}.footer .nav-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;color:var(--text-primary);text-decoration:none;font-weight:500;transition:all .3s}.footer .nav-btn:hover{border-color:var(--accent-primary);background:rgba(16,185,129,0.1);transform:translateY(-2px)}.footer .nav-btn.next{background:var(--gradient-1);border:none;color:white}.footer .nav-btn.next:hover{box-shadow:0 0 30px rgba(16,185,129,0.3)}
+        table.ctrl{width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border-color)}
+        table.ctrl th{background:var(--bg-tertiary);color:var(--accent-primary);padding:10px 14px;text-align:left;font-size:.88rem;border-bottom:1px solid var(--border-color)}
+        table.ctrl td{padding:9px 14px;color:var(--text-secondary);font-size:.88rem;background:var(--bg-card);border-bottom:1px solid rgba(42,42,69,0.4)}
+        table.ctrl td:first-child{color:var(--accent-warning);font-weight:600}
+        .concept-card{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.2);border-left:4px solid var(--accent-secondary);border-radius:12px;padding:24px;margin:20px 0}.concept-card h4{color:var(--accent-secondary);margin-bottom:12px;display:flex;align-items:center;gap:8px}.concept-card .analogy{background:rgba(16,185,129,0.08);padding:12px 16px;border-radius:8px;margin:12px 0;font-style:italic;color:var(--text-primary)}
+        @media(max-width:768px){.hero h1{font-size:2rem}.hero h2{font-size:1.1rem}.container{padding:30px 16px}.card{padding:20px}pre{padding:16px;font-size:.78rem}.nav-bar{flex-direction:column;gap:12px}.nav-links{flex-wrap:wrap;justify-content:center}.footer .nav-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-badge"><span class="dot"></span> Curso Práctico · Parte 4 de 6</div>
+        <h1>CRUD Completo (1 Tabla)</h1>
+        <h2>Insertar, Leer, Actualizar y Eliminar con EF Core manteniendo tu arquitectura en capas</h2>
+        <span class="version-tag">📝 .NET 10 · CRUD · Capas Claras</span>
+    </header>
+    <nav class="nav-bar">
+        <div class="logo">📘 Curso NaturVida</div>
+        <div class="nav-links">
+            <a href="curso-ef-parte0-proyecto.html">①</a>
+            <a href="curso-ef-parte1-intro-ef.html">②</a>
+            <a href="curso-ef-parte2-migrations.html">③</a>
+            <a href="curso-ef-parte3-linq.html">④</a>
+            <a href="#" class="active">⑤ CRUD</a>
+        </div>
+    </nav>
+    <main class="container">
+        <section class="section">
+            <div class="section-number">1</div>
+            <h2>🔄 Cómo cambia el flujo con EF Core</h2>
+            <p>En ADO.NET, el DAL contenía <code>SqlConnection</code>, <code>SqlCommand</code> y parámetros manuales. Con EF Core, el DAL se simplifica radicalmente porque solo le dice al Contexto <strong>qué hacer con los objetos</strong>, no cómo hacerlo en SQL.</p>
+            
+            <table class="ctrl">
+                <thead><tr><th>Operación</th><th>ADO.NET (Antes)</th><th>EF Core (Ahora)</th></tr></thead>
+                <tbody>
+                    <tr><td>📥 Listar</td><td><code>SqlDataAdapter.Fill()</code></td><td><code>context.Categorias.ToList()</code></td></tr>
+                    <tr><td>📤 Insertar</td><td><code>SqlCommand</code> con <code>INSERT INTO...</code></td><td><code>context.Categorias.Add()</code> + <code>SaveChanges()</code></td></tr>
+                    <tr><td>✏️ Actualizar</td><td><code>SqlCommand</code> con <code>UPDATE...</code></td><td><code>context.Categorias.Update()</code> + <code>SaveChanges()</code></td></tr>
+                    <tr><td>🗑️ Eliminar</td><td><code>SqlCommand</code> con <code>DELETE...</code></td><td><code>context.Categorias.Remove()</code> + <code>SaveChanges()</code></td></tr>
+                </tbody>
+            </table>
+
+            <div class="concept-card">
+                <h4>🛒 El Concepto de "Seguimiento de Cambios" (Change Tracking)</h4>
+                <div class="analogy">💡 EF Core actúa como un "carrito de compras". Cuando llamas a <code>Add()</code>, <code>Update()</code> o <code>Remove()</code>, no vas al banco (BD) todavía. Solo marcas los productos. Cuando llamas a <code>SaveChanges()</code>, EF Core revisa el carrito, genera el SQL exacto que falta y lo ejecuta todo en una transacción automática.</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">2</div>
+            <h2>📁 Paso 1: Crear la Capa Data (DAL)</h2>
+            <p>En la carpeta <code>Data/</code>, crea el archivo <code>CategoriaDAL.cs</code>.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Data/CategoriaDAL.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">using</span> <span class="namespace">Microsoft.EntityFrameworkCore</span>;
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.Data</span>;
+
+<span class="kw">public class</span> <span class="type">CategoriaDAL</span>
+{
+    <span class="kw">public</span> <span class="type">List</span>&lt;<span class="type">Categoria</span>&gt; <span class="method">ObtenerTodos</span>()
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="kw">return</span> <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">OrderBy</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Nombre</span>).<span class="method">ToList</span>();
+    }
+
+    <span class="kw">public</span> <span class="type">Categoria</span>? <span class="method">ObtenerPorId</span>(<span class="type">int</span> <span class="param">id</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="kw">return</span> <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">FirstOrDefault</span>(<span class="param">c</span> => <span class="param">c</span>.<span class="prop">Id</span> == <span class="param">id</span>);
+    }
+
+    <span class="kw">public</span> <span class="type">void</span> <span class="method">Insertar</span>(<span class="type">Categoria</span> <span class="param">cat</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">Add</span>(<span class="param">cat</span>);
+        <span class="var">db</span>.<span class="method">SaveChanges</span>(); <span class="cmt">// Aquí se ejecuta el INSERT real</span>
+    }
+
+    <span class="kw">public</span> <span class="type">void</span> <span class="method">Actualizar</span>(<span class="type">Categoria</span> <span class="param">cat</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">Update</span>(<span class="param">cat</span>);
+        <span class="var">db</span>.<span class="method">SaveChanges</span>(); <span class="cmt">// Aquí se ejecuta el UPDATE real</span>
+    }
+
+    <span class="kw">public</span> <span class="type">void</span> <span class="method">Eliminar</span>(<span class="type">int</span> <span class="param">id</span>)
+    {
+        <span class="kw">using</span> <span class="type">var</span> <span class="var">db</span> = <span class="kw">new</span> <span class="type">NaturVidaContext</span>();
+        <span class="kw">var</span> <span class="var">cat</span> = <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">Find</span>(<span class="param">id</span>); <span class="cmt">// Find carga la entidad para poder borrarla</span>
+        <span class="kw">if</span> (<span class="var">cat</span> != <span class="kw">null</span>)
+        {
+            <span class="var">db</span>.<span class="prop">Categorias</span>.<span class="method">Remove</span>(<span class="var">cat</span>);
+            <span class="var">db</span>.<span class="method">SaveChanges</span>(); <span class="cmt">// Aquí se ejecuta el DELETE real</span>
+        }
+    }
+}
+</pre>
+            </div>
+            <div class="info-box tip"><span class="icon">💡</span><div class="content"><strong>¿Por qué <code>Find()</code> antes de <code>Remove()</code>?</strong>
+                <p>EF Core necesita el objeto completo en memoria para marcarlo como "Eliminado". <code>Find(id)</code> busca por la Primary Key de forma ultra rápida (revisa la memoria interna antes de ir a la BD).</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">3</div>
+            <h2>⚙️ Paso 2: Crear la Capa Logic (BLL)</h2>
+            <p>En la carpeta <code>Logic/</code>, crea <code>CategoriaBLL.cs</code>. Aquí validamos antes de tocar la BD.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">Logic/CategoriaBLL.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Data</span>;
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.Logic</span>;
+
+<span class="kw">public class</span> <span class="type">CategoriaBLL</span>
+{
+    <span class="kw">private readonly</span> <span class="type">CategoriaDAL</span> <span class="var">dal</span> = <span class="kw">new</span>();
+
+    <span class="kw">public</span> <span class="type">List</span>&lt;<span class="type">Categoria</span>&gt; <span class="method">Listar</span>() => <span class="var">dal</span>.<span class="method">ObtenerTodos</span>();
+
+    <span class="kw">public</span> <span class="type">string</span> <span class="method">Guardar</span>(<span class="type">Categoria</span> <span class="param">cat</span>)
+    {
+        <span class="kw">if</span> (<span class="type">string</span>.<span class="method">IsNullOrWhiteSpace</span>(<span class="param">cat</span>.<span class="prop">Nombre</span>))
+            <span class="kw">return</span> <span class="str">"⚠️ El nombre es obligatorio."</span>;
+
+        <span class="kw">if</span> (<span class="param">cat</span>.<span class="prop">Nombre</span>.<span class="prop">Length</span> <span class="op">&gt;</span> <span class="num">50</span>)
+            <span class="kw">return</span> <span class="str">"⚠️ El nombre no puede exceder 50 caracteres."</span>;
+
+        <span class="kw">try</span>
+        {
+            <span class="kw">if</span> (<span class="param">cat</span>.<span class="prop">Id</span> > <span class="num">0</span>) <span class="var">dal</span>.<span class="method">Actualizar</span>(<span class="param">cat</span>);
+            <span class="kw">else</span> <span class="var">dal</span>.<span class="method">Insertar</span>(<span class="param">cat</span>);
+            
+            <span class="kw">return</span> <span class="str">"✅ Guardado correctamente."</span>;
+        }
+        <span class="kw">catch</span> (<span class="type">Exception</span> <span class="var">ex</span>)
+        {
+            <span class="kw">return</span> <span class="str">"❌ Error: "</span> + <span class="var">ex</span>.<span class="prop">Message</span>;
+        }
+    }
+
+    <span class="kw">public</span> <span class="type">string</span> <span class="method">Eliminar</span>(<span class="type">int</span> <span class="param">id</span>)
+    {
+        <span class="kw">try</span>
+        {
+            <span class="var">dal</span>.<span class="method">Eliminar</span>(<span class="param">id</span>);
+            <span class="kw">return</span> <span class="str">"✅ Eliminado correctamente."</span>;
+        }
+        <span class="kw">catch</span> (<span class="type">Exception</span> <span class="var">ex</span>) => <span class="str">"❌ Error: "</span> + <span class="var">ex</span>.<span class="prop">Message</span>;
+    }
+}
+</pre>
+            </div>
+            <div class="info-box warning"><span class="icon">⚠️</span><div class="content"><strong>Nota sobre <code>Id > 0</code>:</strong>
+                <p>En EF Core, los IDs Identity empiezan en 1. Si <code>cat.Id == 0</code>, sabemos que es un objeto nuevo. Si tiene un número, ya existe en la BD y debemos actualizarlo.</p>
+            </div></div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">4</div>
+            <h2>🖥️ Paso 3: Diseñar el Formulario UI</h2>
+            <p>Crea <code>frmCategorias.cs</code> en la carpeta <code>UI/</code>. Arrastra estos controles y configura sus propiedades:</p>
+            <table class="ctrl">
+                <thead><tr><th>Control</th><th>Nombre (Name)</th><th>Propiedades Clave</th></tr></thead>
+                <tbody>
+                    <tr><td>DataGridView</td><td><code>dgvCategorias</code></td><td>Dock: Top, Height: 300, ReadOnly: True, SelectionMode: FullRowSelect</td></tr>
+                    <tr><td>TextBox</td><td><code>txtNombre</code></td><td>Width: 250, Margin: 10</td></tr>
+                    <tr><td>CheckBox</td><td><code>chkActivo</code></td><td>Text: "Activo", Checked: True</td></tr>
+                    <tr><td>Label</td><td><code>lblId</code></td><td>Visible: False (Oculto, para guardar el ID seleccionado)</td></tr>
+                    <tr><td>Button</td><td><code>btnGuardar</code></td><td>Text: "💾 Guardar"</td></tr>
+                    <tr><td>Button</td><td><code>btnEliminar</code></td><td>Text: "🗑️ Eliminar"</td></tr>
+                    <tr><td>Button</td><td><code>btnNuevo</code></td><td>Text: "🆕 Nuevo"</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="section">
+            <div class="section-number">5</div>
+            <h2>💻 Paso 4: Código del Formulario (UI)</h2>
+            <p>Abre <code>frmCategorias.cs</code> y reemplaza todo el contenido por esto. Los eventos están suscritos en código para evitar errores de diseñador.</p>
+            <div class="code-block">
+                <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="file-name">UI/frmCategorias.cs</span><span class="lang">C# 14</span></div>
+<pre>
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Logic</span>;
+<span class="kw">using</span> <span class="namespace">NaturVida.App.Models</span>;
+
+<span class="kw">namespace</span> <span class="namespace">NaturVida.App.UI</span>;
+
+<span class="kw">public partial class</span> <span class="type">frmCategorias</span> : <span class="type">Form</span>
+{
+    <span class="kw">private readonly</span> <span class="type">CategoriaBLL</span> <span class="var">bll</span> = <span class="kw">new</span>();
+
+    <span class="kw">public</span> <span class="method">frmCategorias</span>()
+    {
+        <span class="method">InitializeComponent</span>();
+        <span class="var">btnGuardar</span>.<span class="prop">Click</span> += <span class="var">btnGuardar</span>_Click;
+        <span class="var">btnEliminar</span>.<span class="prop">Click</span> += <span class="var">btnEliminar</span>_Click;
+        <span class="var">btnNuevo</span>.<span class="prop">Click</span> += <span class="var">btnNuevo</span>_Click;
+        <span class="var">dgvCategorias</span>.<span class="prop">CellClick</span> += <span class="var">dgvCategorias</span>_CellClick;
+    }
+
+    <span class="kw">private void</span> <span class="method">frmCategorias_Load</span>(<span class="type">object</span> <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>) => <span class="method">Cargar</span>();
+
+    <span class="kw">private void</span> <span class="method">Cargar</span>()
+    {
+        <span class="var">dgvCategorias</span>.<span class="prop">DataSource</span> = <span class="var">bll</span>.<span class="method">Listar</span>();
+        <span class="var">dgvCategorias</span>.<span class="prop">Columns</span>[<span class="str">"Id"</span>].<span class="prop">Visible</span> = <span class="kw">false</span>; <span class="cmt">// Ocultar ID en grilla</span>
+        <span class="method">Limpiar</span>();
+    }
+
+    <span class="kw">private void</span> <span class="method">dgvCategorias_CellClick</span>(<span class="type">object</span>? <span class="param">s</span>, <span class="type">DataGridViewCellEventArgs</span> <span class="param">e</span>)
+    {
+        <span class="kw">if</span> (<span class="var">dgvCategorias</span>.<span class="prop">CurrentRow</span> == <span class="kw">null</span>) <span class="kw">return</span>;
+        
+        <span class="kw">var</span> <span class="var">cat</span> = (<span class="type">Categoria</span>)<span class="var">dgvCategorias</span>.<span class="prop">CurrentRow</span>.<span class="prop">DataBoundItem</span>;
+        <span class="var">lblId</span>.<span class="prop">Text</span> = <span class="var">cat</span>.<span class="prop">Id</span>.<span class="method">ToString</span>();
+        <span class="var">txtNombre</span>.<span class="prop">Text</span> = <span class="var">cat</span>.<span class="prop">Nombre</span>;
+        <span class="var">chkActivo</span>.<span class="prop">Checked</span> = <span class="var">cat</span>.<span class="prop">Activo</span>;
+    }
+
+    <span class="kw">private void</span> <span class="method">btnGuardar_Click</span>(<span class="type">object</span>? <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>)
+    {
+        <span class="kw">var</span> <span class="var">cat</span> = <span class="kw">new</span> <span class="type">Categoria</span>
+        {
+            Id = <span class="type">int</span>.<span class="method">TryParse</span>(<span class="var">lblId</span>.<span class="prop">Text</span>, <span class="kw">out</span> <span class="type">int</span> <span class="var">id</span>) ? <span class="var">id</span> : <span class="num">0</span>,
+            Nombre = <span class="var">txtNombre</span>.<span class="prop">Text</span>.<span class="method">Trim</span>(),
+            Activo = <span class="var">chkActivo</span>.<span class="prop">Checked</span>
+        };
+
+        <span class="type">string</span> <span class="var">msg</span> = <span class="var">bll</span>.<span class="method">Guardar</span>(<span class="var">cat</span>);
+        <span class="type">MessageBox</span>.<span class="method">Show</span>(<span class="var">msg</span>, <span class="str">"Resultado"</span>);
+        <span class="method">Cargar</span>();
+    }
+
+    <span class="kw">private void</span> <span class="method">btnEliminar_Click</span>(<span class="type">object</span>? <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>)
+    {
+        <span class="kw">if</span> (<span class="var">lblId</span>.<span class="prop">Text</span> == <span class="str">""</span>) <span class="kw">return</span>;
+
+        <span class="kw">var</span> <span class="var">res</span> = <span class="type">MessageBox</span>.<span class="method">Show</span>(<span class="str">"¿Eliminar categoría?"</span>, <span class="str">"Confirmar"</span>, <span class="type">MessageBoxButtons</span>.<span class="prop">YesNo</span>, <span class="type">MessageBoxIcon</span>.<span class="prop">Question</span>);
+        <span class="kw">if</span> (<span class="var">res</span> == <span class="type">DialogResult</span>.<span class="prop">Yes</span>)
+        {
+            <span class="type">string</span> <span class="var">msg</span> = <span class="var">bll</span>.<span class="method">Eliminar</span>(<span class="type">int</span>.<span class="method">Parse</span>(<span class="var">lblId</span>.<span class="prop">Text</span>));
+            <span class="type">MessageBox</span>.<span class="method">Show</span>(<span class="var">msg</span>);
+            <span class="method">Cargar</span>();
+        }
+    }
+
+    <span class="kw">private void</span> <span class="method">btnNuevo_Click</span>(<span class="type">object</span>? <span class="param">s</span>, <span class="type">EventArgs</span> <span class="param">e</span>) => <span class="method">Limpiar</span>();
+
+    <span class="kw">private void</span> <span class="method">Limpiar</span>()
+    {
+        <span class="var">txtNombre</span>.<span class="prop">Clear</span>();
+        <span class="var">chkActivo</span>.<span class="prop">Checked</span> = <span class="kw">true</span>;
+        <span class="var">lblId</span>.<span class="prop">Text</span> = <span class="type">string</span>.<span class="prop">Empty</span>;
+        <span class="var">txtNombre</span>.<span class="method">Focus</span>();
+    }
+}
+</pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-number">6</div>
+            <h2>✅ Checklist de Verificación</h2>
+            <div class="card" style="background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.2)">
+                <div class="card-title">📝 Prueba Final del Módulo</div>
+                <ol class="styled-list">
+                    <li>☑ Ejecuta la app (F5). El formulario carga vacío o con categorías existentes.</li>
+                    <li>☑ Escribe un nombre y dale "Guardar". Se inserta y la grilla se actualiza.</li>
+                    <li>☑ Haz clic en una fila. Los datos suben al TextBox y CheckBox.</li>
+                    <li> Cambia el nombre o el check y dale "Guardar". Se actualiza el registro.</li>
+                    <li>☑ Selecciona una fila y dale "Eliminar". Desaparece de la BD y la grilla.</li>
+                    <li>☑ Intenta guardar sin nombre. La BLL bloquea y muestra el mensaje de validación.</li>
+                </ol>
+                <p style="margin-top:16px;color:var(--accent-primary);font-weight:600">📂 Parte 5: Relación 1:N (Categoría → Producto). Uniremos dos tablas, aprenderemos <code>Include()</code> para cargar datos relacionados y usaremos ComboBoxes vinculados a EF Core.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="nav-buttons">
+            <a href="curso-ef-parte3-linq.html" class="nav-btn">← Anterior: LINQ</a>
+            <a href="curso-ef-parte5-relaciones.html" class="nav-btn next">Siguiente: Relaciones 1:N →</a>
+        </div>
+        <p>Curso Transición .NET 10 + EF Core · Parte 4 de 6 · CRUD Completo</p>
+        <p style="margin-top:8px;color:var(--text-muted)">Hecho con 💚 para quienes aprenden paso a paso, sin prisas ni saltos</p>
+    </footer>
+</body>
+</html>
