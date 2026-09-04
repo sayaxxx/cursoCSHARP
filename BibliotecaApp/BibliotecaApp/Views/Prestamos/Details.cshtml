@@ -1,0 +1,83 @@
+@model BibliotecaApp.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Detalles del Préstamo";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Gestión de Préstamos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-info text-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-receipt me-2"></i>Comprobante de Préstamo
+                </h5>
+                <span class="badge bg-light text-dark">ID Préstamo #@Model.Id</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Usuario Solicitante</label>
+                        <span class="fs-5 fw-bold text-dark"><i class="bi bi-person-circle text-primary me-2"></i>@(Model.Usuario?.Nombre ?? "Sin Usuario")</span>
+                        <small class="text-muted d-block ms-4">@(Model.Usuario?.Email)</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Libro / Ejemplar</label>
+                        <span class="fs-5 fw-bold text-dark"><i class="bi bi-book text-secondary me-2"></i>@(Model.Ejemplar?.Libro?.Titulo ?? "Obra no cargada")</span>
+                        <small class="badge bg-light text-dark border d-inline-block mt-1">Ejemplar #@Model.EjemplarId</small>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row mb-3">
+                    <div class="col-md-4 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Fecha Préstamo</label>
+                        <span class="fs-6 text-dark"><i class="bi bi-calendar-check me-1 text-success"></i>@Model.FechaPrestamo.ToString("dd/MM/yyyy")</span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Fecha Devolución</label>
+                        @if (Model.FechaDevolucion.HasValue)
+                        {
+                            <span class="fs-6 text-dark"><i class="bi bi-calendar2-x me-1 text-danger"></i>@Model.FechaDevolucion.Value.ToString("dd/MM/yyyy")</span>
+                        }
+                        else
+                        {
+                            <span class="text-muted italic small">Pendiente</span>
+                        }
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Estado del Préstamo</label>
+                        @if (Model.FechaDevolucion == null)
+                        {
+                            <span class="badge bg-warning bg-opacity-10 text-dark border border-warning px-3 py-2">
+                                <i class="bi bi-clock-history me-1"></i>En Préstamo
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success bg-opacity-10 text-success border border-success px-3 py-2">
+                                <i class="bi bi-check-circle-fill me-1"></i>Devuelto
+                            </span>
+                        }
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Regresar a la Lista
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-dark fw-bold">
+                        <i class="bi bi-pencil-fill me-1"></i> Editar Préstamo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

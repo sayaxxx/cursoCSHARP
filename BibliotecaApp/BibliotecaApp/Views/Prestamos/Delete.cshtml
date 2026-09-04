@@ -1,0 +1,68 @@
+@model BibliotecaApp.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Eliminar Préstamo";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Gestión de Préstamos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Eliminar Préstamo</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-danger shadow-sm">
+            <div class="card-header bg-danger text-white py-3">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Confirmar Eliminación
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-warning text-dark" role="alert">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    <strong>¿Estás seguro de que deseas eliminar este registro de préstamo?</strong> Esta acción removerá el historial del préstamo.
+                </div>
+
+                <dl class="row mb-4">
+                    <dt class="col-sm-4 text-muted">ID Préstamo</dt>
+                    <dd class="col-sm-8 fw-bold text-dark">#@Model.Id</dd>
+
+                    <dt class="col-sm-4 text-muted">Usuario</dt>
+                    <dd class="col-sm-8">@(Model.Usuario?.Nombre ?? "Sin datos")</dd>
+
+                    <dt class="col-sm-4 text-muted">Libro / Ejemplar</dt>
+                    <dd class="col-sm-8">@(Model.Ejemplar?.Libro?.Titulo ?? "Ejemplar #" + Model.EjemplarId)</dd>
+
+                    <dt class="col-sm-4 text-muted">F. Préstamo</dt>
+                    <dd class="col-sm-8">@Model.FechaPrestamo.ToString("dd/MM/yyyy")</dd>
+
+                    <dt class="col-sm-4 text-muted">Estado</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.FechaDevolucion == null)
+                        {
+                            <span class="badge bg-warning text-dark">En Préstamo</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Devuelto (@Model.FechaDevolucion.Value.ToString("dd/MM/yyyy"))</span>
+                        }
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-1"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-danger shadow-sm">
+                            <i class="bi bi-trash-fill me-1"></i> Confirmar y Eliminar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

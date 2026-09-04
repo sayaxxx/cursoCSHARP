@@ -1,0 +1,98 @@
+@model BibliotecaApp.Models.Ejemplar
+
+@{
+    ViewData["Title"] = "Detalles del Ejemplar";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Inventario de Ejemplares</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-info text-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-tag-fill me-2"></i>Ficha del Ejemplar Físico
+                </h5>
+                <span class="badge bg-light text-dark">Código #@Model.Id</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-12 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Obra Literaria</label>
+                        <span class="fs-4 fw-bold text-dark"><i class="bi bi-book text-success me-2"></i>@(Model.Libro?.Titulo ?? "Sin Libro")</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">ISBN del Libro</label>
+                        <span class="badge bg-light text-dark border fs-6"><i class="bi bi-barcode me-1"></i>@(Model.Libro?.ISBN ?? "N/A")</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Estado Físico Actual</label>
+                        @if (Model.Estado == "Disponible")
+                        {
+                            <span class="badge bg-success bg-opacity-10 text-success border border-success px-3 py-2 fs-6">
+                                <i class="bi bi-check-circle-fill me-1"></i>Disponible
+                            </span>
+                        }
+                        else if (Model.Estado == "Prestado")
+                        {
+                            <span class="badge bg-warning bg-opacity-10 text-dark border border-warning px-3 py-2 fs-6">
+                                <i class="bi bi-clock-history me-1"></i>Prestado
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger px-3 py-2 fs-6">
+                                <i class="bi bi-exclamation-triangle-fill me-1"></i>@Model.Estado
+                            </span>
+                        }
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- Historial o Préstamos vinculados -->
+                <div class="mb-3">
+                    <h6 class="fw-bold text-dark mb-3"><i class="bi bi-arrow-repeat me-1 text-primary"></i>Historial de Préstamos</h6>
+                    @if (Model.Prestamos != null && Model.Prestamos.Any())
+                    {
+                        <div class="list-group list-group-flush border rounded">
+                            @foreach (var pr in Model.Prestamos)
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-person me-1 text-secondary"></i>
+                                        <span class="fw-semibold">@(pr.Usuario?.Nombre ?? "Usuario")</span>
+                                        <small class="text-muted d-block ms-3">
+                                            F. Préstamo: @pr.FechaPrestamo.ToString("dd/MM/yyyy")
+                                        </small>
+                                    </div>
+                                    <span class="badge @(pr.FechaDevolucion.HasValue ? "bg-light text-dark border" : "bg-warning text-dark")">
+                                        @(pr.FechaDevolucion.HasValue ? "Devuelto: " + pr.FechaDevolucion.Value.ToString("dd/MM/yyyy") : "En Préstamo")
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted small">Este ejemplar no registra préstamos asociados.</p>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Regresar a la Lista
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-dark fw-bold">
+                        <i class="bi bi-pencil-fill me-1"></i> Editar Ejemplar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

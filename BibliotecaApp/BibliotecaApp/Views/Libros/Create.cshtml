@@ -1,0 +1,82 @@
+@model BibliotecaApp.Models.Libro
+
+@{
+    ViewData["Title"] = "Registrar Nuevo Libro";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Catálogo de Libros</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Registrar Libro</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-primary text-white py-3">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-journal-plus me-2"></i>Registrar Nuevo Libro
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Titulo" class="form-label fw-semibold">Título de la Obra</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-journal-text"></i></span>
+                            <input asp-for="Titulo" class="form-control" placeholder="Ej. Cien Años de Soledad" />
+                        </div>
+                        <span asp-validation-for="Titulo" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="ISBN" class="form-label fw-semibold">Código ISBN</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-barcode"></i></span>
+                                <input asp-for="ISBN" class="form-control" placeholder="978-XXXXX" />
+                            </div>
+                            <span asp-validation-for="ISBN" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="AnioPublicacion" class="form-label fw-semibold">Año de Publicación</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                                <input asp-for="AnioPublicacion" class="form-control" type="number" placeholder="YYYY" />
+                            </div>
+                            <span asp-validation-for="AnioPublicacion" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Autor(es) Principal(es)</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                            <select name="autorIds" class="form-select" asp-items="ViewBag.AutorId" multiple="multiple">
+                            </select>
+                        </div>
+                        <small class="text-muted">Mantén presionada la tecla Ctrl para seleccionar más de un autor.</small>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center pt-2 border-top">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary shadow-sm">
+                            <i class="bi bi-check-circle me-1"></i> Guardar Libro
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,68 @@
+@model BibliotecaApp.Models.Pais
+
+@{
+    ViewData["Title"] = "Detalles del País";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Gestión de Países</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-info text-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-globe me-2"></i>Información del País
+                </h5>
+                <span class="badge bg-light text-dark">ID #@Model.Id</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-12 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Nombre del País</label>
+                        <span class="fs-3 fw-bold text-dark"><i class="bi bi-flag-fill text-primary me-2"></i>@Model.Nombre</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- Autores vinculados a este país -->
+                <div class="mb-3">
+                    <h6 class="fw-bold text-dark mb-3"><i class="bi bi-people-fill me-1 text-primary"></i>Autores Registrados de este País</h6>
+                    @if (Model.Autores != null && Model.Autores.Any())
+                    {
+                        <div class="list-group list-group-flush border rounded">
+                            @foreach (var autor in Model.Autores)
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-person me-2 text-secondary"></i>
+                                        <span class="fw-semibold">@autor.Nombre</span>
+                                    </div>
+                                    <span class="badge bg-light text-dark border">ID Autor #@autor.Id</span>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted small">No hay autores vinculados a este país actualmente.</p>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Regresar a la Lista
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-dark fw-bold">
+                        <i class="bi bi-pencil-fill me-1"></i> Editar País
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

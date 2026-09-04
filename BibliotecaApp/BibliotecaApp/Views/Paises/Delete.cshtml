@@ -1,0 +1,57 @@
+@model BibliotecaApp.Models.Pais
+
+@{
+    ViewData["Title"] = "Eliminar País";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Gestión de Países</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Eliminar País</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-danger shadow-sm">
+            <div class="card-header bg-danger text-white py-3">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Confirmar Eliminación
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-warning text-dark" role="alert">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    <strong>¿Estás seguro de que deseas eliminar este país?</strong> Si existen autores o registros asociados, la acción podría afectar la integridad de los datos.
+                </div>
+
+                <dl class="row mb-4">
+                    <dt class="col-sm-4 text-muted">ID País</dt>
+                    <dd class="col-sm-8 fw-bold text-dark">#@Model.Id</dd>
+
+                    <dt class="col-sm-4 text-muted">Nombre</dt>
+                    <dd class="col-sm-8 fw-bold text-primary">@Model.Nombre</dd>
+
+                    <dt class="col-sm-4 text-muted">Autores Asociados</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge bg-light text-dark border">
+                            @(Model.Autores?.Count() ?? 0) autor(es)
+                        </span>
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-1"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-danger shadow-sm">
+                            <i class="bi bi-trash-fill me-1"></i> Confirmar y Eliminar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

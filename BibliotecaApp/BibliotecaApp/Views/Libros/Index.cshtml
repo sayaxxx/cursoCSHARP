@@ -1,0 +1,112 @@
+@model IEnumerable<BibliotecaApp.Models.Libro>
+
+@{
+    ViewData["Title"] = "Catálogo de Libros";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h2 fw-bold text-dark mb-1">
+            <i class="bi bi-book-half text-primary me-2"></i>Catálogo de Libros
+        </h1>
+        <p class="text-muted mb-0">Gestión de títulos, autores vinculados y disponibilidad física en inventario.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary shadow-sm">
+        <i class="bi bi-plus-lg me-1"></i> Registrar Nuevo Libro
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light border-bottom">
+                    <tr>
+                        <th class="ps-4">Título</th>
+                        <th>ISBN</th>
+                        <th>Año de Publicación</th>
+                        <th>Autor(es)</th>
+                        <th>Ejemplares en Stock</th>
+                        <th class="text-end pe-4">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                No se encontraron libros registrados en el sistema.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-bold text-dark">
+                                    <i class="bi bi-journal-text me-2 text-primary"></i>@Html.DisplayFor(modelItem => item.Titulo)
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">
+                                        <i class="bi bi-barcode me-1"></i>@Html.DisplayFor(modelItem => item.ISBN)
+                                    </span>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.AnioPublicacion)</td>
+                                <td>
+                                    @if (item.LibroAutores != null && item.LibroAutores.Any())
+                                    {
+                                        <div class="d-flex flex-wrap gap-1">
+                                            @foreach (var la in item.LibroAutores)
+                                            {
+                                                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25">
+                                                    <i class="bi bi-person me-1"></i>@la.Autor?.Nombre
+                                                </span>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small italic">Sin autor asignado</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.Ejemplares != null && item.Ejemplares.Any())
+                                    {
+                                        var disponibles = item.Ejemplares.Count(e => e.Estado == "Disponible");
+                                        var total = item.Ejemplares.Count();
+
+                                        <div>
+                                            <span class="badge bg-info text-dark me-1">Total: @total</span>
+                                            <span class="badge @(disponibles > 0 ? "bg-success" : "bg-danger")">
+                                                Disponibles: @disponibles
+                                            </span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Sin ejemplares</span>
+                                    }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning" title="Editar">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info" title="Detalles">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" title="Eliminar">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+@model BibliotecaApp.Models.Usuario
+
+@{
+    ViewData["Title"] = "Detalles del Usuario";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Gestión de Usuarios</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-info text-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-person-vcard me-2"></i>Perfil del Usuario
+                </h5>
+                <span class="badge bg-light text-dark">ID #@Model.Id</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Nombre Completo</label>
+                        <span class="fs-4 fw-bold text-dark"><i class="bi bi-person-circle text-info me-2"></i>@Model.Nombre</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Correo Electrónico</label>
+                        <span class="fs-6 text-secondary"><i class="bi bi-envelope me-1"></i>@Model.Email</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- Historial de Préstamos -->
+                <div class="mb-3">
+                    <h6 class="fw-bold text-dark mb-3"><i class="bi bi-arrow-repeat me-1 text-primary"></i>Historial de Préstamos Solicitados</h6>
+                    @if (Model.Prestamos != null && Model.Prestamos.Any())
+                    {
+                        <div class="list-group list-group-flush border rounded">
+                            @foreach (var pr in Model.Prestamos)
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-book me-1 text-secondary"></i>
+                                        <span class="fw-semibold">@(pr.Ejemplar?.Libro?.Titulo ?? "Ejemplar #" + pr.EjemplarId)</span>
+                                        <small class="text-muted d-block ms-3">
+                                            Fecha Préstamo: @pr.FechaPrestamo.ToString("dd/MM/yyyy")
+                                        </small>
+                                    </div>
+                                    <span class="badge @(pr.FechaDevolucion.HasValue ? "bg-success bg-opacity-10 text-success border border-success" : "bg-warning bg-opacity-10 text-dark border border-warning")">
+                                        @(pr.FechaDevolucion.HasValue ? "Devuelto el " + pr.FechaDevolucion.Value.ToString("dd/MM/yyyy") : "En Préstamo")
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted small">Este usuario no ha registrado ningún préstamo hasta el momento.</p>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Regresar a la Lista
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-dark fw-bold">
+                        <i class="bi bi-pencil-fill me-1"></i> Editar Usuario
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

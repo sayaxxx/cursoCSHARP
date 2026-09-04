@@ -1,0 +1,60 @@
+@model BibliotecaApp.Models.Autor
+
+@{
+    ViewData["Title"] = "Eliminar Autor";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Gestión de Autores</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Eliminar Autor</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-danger shadow-sm">
+            <div class="card-header bg-danger text-white py-3">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Confirmar Eliminación
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-warning text-dark" role="alert">
+                    <i class="bi bi-info-circle-fill me-2"></i>
+                    <strong>¿Estás seguro de que deseas eliminar este autor?</strong> Si tiene libros asignados, revisa las restricciones antes de continuar.
+                </div>
+
+                <dl class="row mb-4">
+                    <dt class="col-sm-4 text-muted">Nombre</dt>
+                    <dd class="col-sm-8 fw-bold text-dark">@Model.Nombre</dd>
+
+                    <dt class="col-sm-4 text-muted">Nacimiento</dt>
+                    <dd class="col-sm-8">@Model.FechaNacimiento.ToString("dd/MM/yyyy")</dd>
+
+                    <dt class="col-sm-4 text-muted">País</dt>
+                    <dd class="col-sm-8">@(Model.Pais?.Nombre ?? "Sin país")</dd>
+
+                    <dt class="col-sm-4 text-muted">Libros</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge bg-secondary">
+                            @(Model.LibroAutores?.Count() ?? 0) obra(s) vinculada(s)
+                        </span>
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-1"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-danger shadow-sm">
+                            <i class="bi bi-trash-fill me-1"></i> Confirmar y Eliminar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+@model IEnumerable<BibliotecaApp.Models.Autor>
+
+@{
+    ViewData["Title"] = "Gestión de Autores";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h2 fw-bold text-dark mb-1">
+            <i class="bi bi-people-fill text-primary me-2"></i>Gestión de Autores
+        </h1>
+        <p class="text-muted mb-0">Listado de autores registrados, nacionalidades y sus obras literarias.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary shadow-sm">
+        <i class="bi bi-person-plus-fill me-1"></i> Registrar Nuevo Autor
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light border-bottom">
+                    <tr>
+                        <th class="ps-4">Autor</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>País de Origen</th>
+                        <th>Obras Publicadas</th>
+                        <th class="text-end pe-4">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                <i class="bi bi-person-slash fs-1 d-block mb-2"></i>
+                                No se encontraron autores registrados.
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-bold text-dark">
+                                    <i class="bi bi-person-circle me-2 text-primary"></i>@Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    <span class="text-secondary">
+                                        <i class="bi bi-calendar-event me-1"></i>@item.FechaNacimiento.ToString("dd/MM/yyyy")
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">
+                                        <i class="bi bi-geo-alt-fill text-danger me-1"></i>@(item.Pais?.Nombre ?? "Sin especificar")
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (item.LibroAutores != null && item.LibroAutores.Any())
+                                    {
+                                        <div class="d-flex flex-wrap gap-1">
+                                            @foreach (var la in item.LibroAutores)
+                                            {
+                                                <span class="badge bg-info bg-opacity-10 text-dark border border-info border-opacity-25">
+                                                    <i class="bi bi-book me-1"></i>@la.Libro?.Titulo
+                                                </span>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small">Sin libros vinculados</span>
+                                    }
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning" title="Editar">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info" title="Detalles">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" title="Eliminar">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

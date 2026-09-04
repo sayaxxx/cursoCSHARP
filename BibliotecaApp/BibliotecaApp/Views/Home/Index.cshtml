@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Panel Principal";
+}
+
+<!-- Hero Section / Bienvenida -->
+<div class="p-5 mb-4 bg-primary text-white rounded-3 shadow-sm">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold"><i class="bi bi-journal-bookmark-fill me-2"></i>Sistema de Gestión Bibliotecaria</h1>
+        <p class="col-md-9 fs-5">
+            Bienvenido al panel de administración. Desde aquí puedes gestionar la circulación de libros, administrar el catálogo de obras, registrar autores y controlar el inventario de ejemplares en tiempo real.
+        </p>
+        <a asp-controller="Prestamos" asp-action="Create" class="btn btn-light btn-lg text-primary fw-bold shadow-sm">
+            <i class="bi bi-plus-circle me-1"></i> Registrar Nuevo Préstamo
+        </a>
+    </div>
+</div>
+
+<!-- Métricas / KPIs rápidos -->
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm border-start border-primary border-4 h-100">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted fw-normal text-uppercase mb-1">Libros</h6>
+                    <h3 class="mb-0 fw-bold text-dark">Catálogo</h3>
+                </div>
+                <div class="bg-primary bg-opacity-10 p-3 rounded-circle text-primary">
+                    <i class="bi bi-book fs-3"></i>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+                <a asp-controller="Libros" asp-action="Index" class="text-primary text-decoration-none small fw-semibold">
+                    Ver catálogo completo &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm border-start border-success border-4 h-100">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted fw-normal text-uppercase mb-1">Ejemplares</h6>
+                    <h3 class="mb-0 fw-bold text-dark">Inventario</h3>
+                </div>
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle text-success">
+                    <i class="bi bi-collection fs-3"></i>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+                <a asp-controller="Ejemplares" asp-action="Index" class="text-success text-decoration-none small fw-semibold">
+                    Consultar stock &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm border-start border-warning border-4 h-100">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted fw-normal text-uppercase mb-1">Préstamos</h6>
+                    <h3 class="mb-0 fw-bold text-dark">Circulación</h3>
+                </div>
+                <div class="bg-warning bg-opacity-10 p-3 rounded-circle text-warning">
+                    <i class="bi bi-arrow-repeat fs-3"></i>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+                <a asp-controller="Prestamos" asp-action="Index" class="text-warning text-decoration-none small fw-semibold">
+                    Ver activos e historial &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm border-start border-info border-4 h-100">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div>
+                    <h6 class="text-muted fw-normal text-uppercase mb-1">Usuarios</h6>
+                    <h3 class="mb-0 fw-bold text-dark">Lectores</h3>
+                </div>
+                <div class="bg-info bg-opacity-10 p-3 rounded-circle text-info">
+                    <i class="bi bi-people fs-3"></i>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0">
+                <a asp-controller="Usuarios" asp-action="Index" class="text-info text-decoration-none small fw-semibold">
+                    Gestionar usuarios &rarr;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Accesos directos / Módulos del sistema -->
+<div class="row g-4">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white py-3 border-0">
+                <h5 class="card-title mb-0 fw-bold text-secondary">
+                    <i class="bi bi-grid-3x3-gap-fill me-2 text-primary"></i>Módulos de Gestión
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded bg-light hover-shadow">
+                            <h6 class="fw-bold"><i class="bi bi-person-lines-fill text-primary me-2"></i>Autores y Orígenes</h6>
+                            <p class="text-muted small mb-2">Administra el perfil de autores y sus países de origen.</p>
+                            <a asp-controller="Autores" asp-action="Index" class="btn btn-sm btn-outline-primary me-1">Autores</a>
+                            <a asp-controller="Paises" asp-action="Index" class="btn btn-sm btn-outline-secondary">Países</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded bg-light hover-shadow">
+                            <h6 class="fw-bold"><i class="bi bi-book-half text-success me-2"></i>Catálogo de Libros</h6>
+                            <p class="text-muted small mb-2">Añade o edita obras, códigos ISBN y relaciones con autores.</p>
+                            <a asp-controller="Libros" asp-action="Create" class="btn btn-sm btn-success text-white">Nuevo Libro</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100 bg-light">
+            <div class="card-body">
+                <h5 class="fw-bold text-dark mb-3"><i class="bi bi-info-circle-fill text-primary me-2"></i>Información del Sistema</h5>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2 text-muted small">
+                        <i class="bi bi-check2-circle text-success me-2"></i>Base de datos normalizada activada.
+                    </li>
+                    <li class="mb-2 text-muted small">
+                        <i class="bi bi-check2-circle text-success me-2"></i>Relación $M:N$ de Autores y Libros operativa.
+                    </li>
+                    <li class="mb-2 text-muted small">
+                        <i class="bi bi-check2-circle text-success me-2"></i>Control de inventario de ejemplares físicos.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

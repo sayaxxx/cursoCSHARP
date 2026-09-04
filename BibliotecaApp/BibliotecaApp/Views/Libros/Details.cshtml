@@ -1,0 +1,107 @@
+@model BibliotecaApp.Models.Libro
+
+@{
+    ViewData["Title"] = "Detalles del Libro";
+}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index">Catálogo de Libros</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detalles</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-info text-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0 fw-bold">
+                    <i class="bi bi-journal-check me-2"></i>Información Detallada de la Obra
+                </h5>
+                <span class="badge bg-light text-dark">ID #@Model.Id</span>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-4">
+                    <div class="col-md-12 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Título</label>
+                        <span class="fs-4 fw-bold text-dark"><i class="bi bi-book text-primary me-2"></i>@Model.Titulo</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">ISBN</label>
+                        <span class="badge bg-light text-dark border fs-6"><i class="bi bi-barcode me-1"></i>@Model.ISBN</span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="text-muted small text-uppercase fw-semibold d-block">Año de Publicación</label>
+                        <span class="fs-6 text-secondary"><i class="bi bi-calendar-event me-1"></i>@Model.AnioPublicacion</span>
+                    </div>
+                </div>
+
+                <hr />
+
+                <!-- Sección Autores -->
+                <div class="mb-4">
+                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-people me-1 text-primary"></i>Autor(es) Vinculado(s)</h6>
+                    @if (Model.LibroAutores != null && Model.LibroAutores.Any())
+                    {
+                        <div class="d-flex flex-wrap gap-2">
+                            @foreach (var la in Model.LibroAutores)
+                            {
+                                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">
+                                    <i class="bi bi-person-fill me-1"></i>@la.Autor?.Nombre
+                                </span>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted small">No hay autores registrados para esta obra.</p>
+                    }
+                </div>
+
+                <!-- Sección Ejemplares Físicos -->
+                <div class="mb-3">
+                    <h6 class="fw-bold text-dark mb-2"><i class="bi bi-collection me-1 text-success"></i>Ejemplares Registrados en Inventario</h6>
+                    @if (Model.Ejemplares != null && Model.Ejemplares.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Nº Ejemplar</th>
+                                        <th>Estado Actual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var ej in Model.Ejemplares)
+                                    {
+                                        <tr>
+                                            <td>Ejemplar #@ej.Id</td>
+                                            <td>
+                                                <span class="badge @(ej.Estado == "Disponible" ? "bg-success" : "bg-warning text-dark")">
+                                                    @ej.Estado
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted small">Sin ejemplares creados aún.</p>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i> Regresar a la Lista
+                    </a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning text-dark fw-bold">
+                        <i class="bi bi-pencil-fill me-1"></i> Editar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
